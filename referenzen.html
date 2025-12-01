@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referenzen | M&M Elektro Engineering GmbH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0055DD;
+            --primary-glow: #0077FF;
+            --primary-dark: #003399;
+            --accent: #00B4D8;
+            --bg-light: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --bg-elevated: #F1F5F9;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #94A3B8;
+            --border-light: #E2E8F0;
+            --gradient-electric: linear-gradient(135deg, #0055DD 0%, #00B4D8 50%, #0055DD 100%);
+            --gradient-dark: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+            --shadow-glow: 0 0 60px rgba(0, 85, 221, 0.2);
+            --shadow-card: 0 25px 80px rgba(0, 0, 0, 0.08);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-soft); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        /* Hide scrollbars (keeps scrolling) */
+        html, body {
+            -ms-overflow-style: none; /* IE/Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 85, 221, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 85, 221, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            bottom: 20%;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 60px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-electric);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.5);
+        }
+
+        .logo-text {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--text-primary);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-electric);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-electric);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px rgba(0, 102, 255, 0.5);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 28px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 160px 60px 80px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .page-hero-content {
+            max-width: 900px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .page-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(48px, 7vw, 80px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .gradient-text {
+            background: var(--gradient-electric);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            padding: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 102, 255, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            background: var(--gradient-electric);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 80px 60px;
+            background: var(--bg-soft);
+            position: relative;
+            z-index: 1;
+        }
+
+        .partners-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .partners-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .partners-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .partner-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .partner-card:hover {
+            border-color: rgba(0, 102, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .partner-card .partner-logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover .partner-logo {
+            color: var(--text-primary);
+        }
+
+        .partner-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 120px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .projects-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .projects-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .projects-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            position: relative;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 102, 255, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .project-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-electric);
+            opacity: 0.1;
+        }
+
+        .project-image-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-electric);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .project-image-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .project-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 102, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .project-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project-tag {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            padding: 120px 60px;
+            background: var(--bg-card);
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .featured-visual {
+            position: relative;
+        }
+
+        .featured-visual-card {
+            background: var(--bg-elevated);
+            border: 1px solid rgba(0, 85, 221, 0.2);
+            border-radius: 30px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-visual-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, transparent 50%);
+            animation: rotateGradient 15s linear infinite;
+        }
+
+        @keyframes rotateGradient {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .featured-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-electric);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 1;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .featured-icon svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .featured-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-stat {
+            background: rgba(0, 102, 255, 0.05);
+            border: 1px solid rgba(0, 102, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .featured-stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .featured-stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .featured-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .featured-content > p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .featured-list {
+            list-style: none;
+            display: grid;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .featured-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .featured-list-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .featured-list-icon svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient-electric);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 80px rgba(0, 102, 255, 0.5);
+        }
+
+        .btn-primary svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .testimonials-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .testimonials-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(0, 102, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 80px;
+            font-family: 'Sora', sans-serif;
+            color: rgba(0, 102, 255, 0.1);
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-stars svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-electric);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .testimonial-info h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .testimonial-info p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 60px;
+            background: var(--bg-soft);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--bg-elevated);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            border-radius: 40px;
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 229, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-soft);
+            border-top: 1px solid var(--border-light);
+            padding: 80px 60px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 25px;
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-social svg {
+            width: 20px;
+            height: 20px;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover svg {
+            color: white;
+        }
+
+        .footer-links h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: grid;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            font-size: 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-legal a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        .cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 85, 221, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .featured-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                padding: 15px 30px;
+            }
+
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .page-hero {
+                padding: 140px 30px 60px;
+            }
+
+            .stats-bar {
+                padding: 40px 30px;
+            }
+
+            .stats-bar-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .partners {
+                padding: 60px 30px;
+            }
+
+            .projects {
+                padding: 80px 30px;
+            }
+
+            .featured-project {
+                padding: 80px 30px;
+            }
+
+            .testimonials {
+                padding: 80px 30px;
+            }
+
+            .cta-section {
+                padding: 80px 30px;
+            }
+
+            footer {
+                padding: 60px 30px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .cta-container {
+                padding: 60px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">M&M</div>
+            <div class="logo-text">Elektro <span>Engineering</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leistungen.html">Leistungen</a></li>
+            <li><a href="referenzen.html" class="active">Referenzen</a></li>
+            <li><a href="ueber-uns.html">Über Uns</a></li>
+            <li><a href="karriere.html">Karriere</a></li>
+        </ul>
+        <a href="kontakt.html" class="nav-cta">Kontakt</a>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="leistungen.html">Leistungen</a>
+        <a href="referenzen.html">Referenzen</a>
+        <a href="ueber-uns.html">Über Uns</a>
+        <a href="karriere.html">Karriere</a>
+        <a href="kontakt.html">Kontakt</a>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="section-tag">Unsere Arbeit</span>
+            <h1>Referenzen & <span class="gradient-text">Projekte</span></h1>
+            <p>Entdecken Sie eine Auswahl unserer erfolgreich realisierten Projekte. Jedes Projekt ist ein Beweis für unsere Kompetenz und unser Engagement für Qualität.</p>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-bar-container">
+            <div class="stat-item reveal stagger-1">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Abgeschlossene Projekte</div>
+            </div>
+            <div class="stat-item reveal stagger-2">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Zufriedene Kunden</div>
+            </div>
+            <div class="stat-item reveal stagger-3">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Smart Home Installationen</div>
+            </div>
+            <div class="stat-item reveal stagger-4">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Kundenzufriedenheit</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="partners-header reveal">
+            <span class="section-tag">Partner & Hersteller</span>
+            <h2>Starke <span class="gradient-text">Partnerschaften</span></h2>
+            <p>Wir arbeiten mit den führenden Herstellern und Partnern der Branche zusammen</p>
+        </div>
+        <div class="partners-grid">
+            <div class="partner-card reveal stagger-1">
+                <span class="partner-logo">HANOVA</span>
+                <p>Wohnungsbau</p>
+            </div>
+            <div class="partner-card reveal stagger-2">
+                <span class="partner-logo">LOXONE</span>
+                <p>Smart Home</p>
+            </div>
+            <div class="partner-card reveal stagger-3">
+                <span class="partner-logo">SIEMENS</span>
+                <p>Automatisierung</p>
+            </div>
+            <div class="partner-card reveal stagger-4">
+                <span class="partner-logo">ABB</span>
+                <p>Elektrotechnik</p>
+            </div>
+            <div class="partner-card reveal stagger-5">
+                <span class="partner-logo">GIRA</span>
+                <p>Schalter & Systeme</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+        <div class="projects-header reveal">
+            <span class="section-tag">Projektgalerie</span>
+            <h2>Ausgewählte <span class="gradient-text">Projekte</span></h2>
+            <p>Ein Einblick in unsere vielfältigen und erfolgreich umgesetzten Projekte</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card reveal stagger-1">
+                <div class="project-image">
+                    <span class="project-category">Smart Home</span>
+                    <div class="project-image-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Villa Smart Home Hannover</h3>
+                    <p class="project-desc">Komplette KNX-basierte Gebäudeautomation für eine luxuriöse Villa mit Lichtsteuerung, Heizung und Multiroom-Audio.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">KNX</span>
+                        <span class="project-tag">Loxone</span>
+                        <span class="project-tag">LED</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal stagger-2">
+                <div class="project-image">
+                    <span class="project-category">PV-Anlage</span>
+                    <div class="project-image-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Mehrfamilienhaus Photovoltaik</h3>
+                    <p class="project-desc">40 kWp PV-Anlage mit Batteriespeicher für ein Mehrfamilienhaus. Eigenverbrauchsoptimierung für 12 Wohneinheiten.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">40 kWp</span>
+                        <span class="project-tag">Speicher</span>
+                        <span class="project-tag">Monitoring</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal stagger-3">
+                <div class="project-image">
+                    <span class="project-category">Gewerbe</span>
+                    <div class="project-image-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Bürogebäude Elektrifizierung</h3>
+                    <p class="project-desc">Komplette Elektroinstallation eines 3-stöckigen Bürogebäudes inkl. Netzwerk und Beleuchtungssteuerung.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">3.000m²</span>
+                        <span class="project-tag">DALI</span>
+                        <span class="project-tag">Cat7</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal stagger-4">
+                <div class="project-image">
+                    <span class="project-category">Wohnanlage</span>
+                    <div class="project-image-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">HANOVA Wohnprojekt</h3>
+                    <p class="project-desc">Elektroinstallation für 45 Wohneinheiten in Zusammenarbeit mit der HANOVA Wohnungsgesellschaft.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">45 WE</span>
+                        <span class="project-tag">Neubau</span>
+                        <span class="project-tag">Sprechanlagen</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal stagger-5">
+                <div class="project-image">
+                    <span class="project-category">Netzwerk</span>
+                    <div class="project-image-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <path d="M8 21h8M12 17v4"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">IT-Unternehmen Serverraum</h3>
+                    <p class="project-desc">Planung und Installation eines Serverraums mit redundanter Stromversorgung und Klimatisierung.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">USV</span>
+                        <span class="project-tag">Kühlung</span>
+                        <span class="project-tag">LWL</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal stagger-6">
+                <div class="project-image">
+                    <span class="project-category">Beleuchtung</span>
+                    <div class="project-image-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Restaurant Lichtkonzept</h3>
+                    <p class="project-desc">Individuelles Beleuchtungskonzept für ein gehobenes Restaurant mit dynamischer Lichtstimmung.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">LED</span>
+                        <span class="project-tag">DMX</span>
+                        <span class="project-tag">Szenen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Project -->
+    <section class="featured-project">
+        <div class="featured-container">
+            <div class="featured-visual reveal-left">
+                <div class="featured-visual-card">
+                    <div class="featured-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                    </div>
+                    <div class="featured-stats">
+                        <div class="featured-stat">
+                            <div class="featured-stat-number">500m²</div>
+                            <div class="featured-stat-label">Wohnfläche</div>
+                        </div>
+                        <div class="featured-stat">
+                            <div class="featured-stat-number">120+</div>
+                            <div class="featured-stat-label">KNX Aktoren</div>
+                        </div>
+                        <div class="featured-stat">
+                            <div class="featured-stat-number">8</div>
+                            <div class="featured-stat-label">Lichtszenen</div>
+                        </div>
+                        <div class="featured-stat">
+                            <div class="featured-stat-number">100%</div>
+                            <div class="featured-stat-label">Automation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-content reveal-right">
+                <span class="section-tag">Highlight Projekt</span>
+                <h2>Luxusvilla <span class="gradient-text">Smart Living</span></h2>
+                <p>Unser bisher umfangreichstes Smart Home Projekt: Eine Luxusvilla mit vollständiger KNX-Integration, bei der jeder Aspekt des Wohnens intelligent gesteuert wird.</p>
+                <ul class="featured-list">
+                    <li>
+                        <span class="featured-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        Vollautomatische Beschattung basierend auf Sonnenstand
+                    </li>
+                    <li>
+                        <span class="featured-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        Multiroom-Audio mit Sonos Integration
+                    </li>
+                    <li>
+                        <span class="featured-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        Sprachsteuerung mit Alexa und Apple HomeKit
+                    </li>
+                    <li>
+                        <span class="featured-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        Integriertes Sicherheitssystem mit Kameraüberwachung
+                    </li>
+                </ul>
+                <a href="kontakt.html" class="btn-primary">
+                    Ähnliches Projekt besprechen
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-header reveal">
+            <span class="section-tag">Kundenstimmen</span>
+            <h2>Was unsere <span class="gradient-text">Kunden</span> sagen</h2>
+            <p>Echte Erfahrungen von zufriedenen Kunden, die unsere Arbeit schätzen</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal stagger-1">
+                <div class="testimonial-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="testimonial-text">Herr Muhovic und sein Team haben unsere gesamte Smart Home Installation durchgeführt. Die Planung war hervorragend und die Umsetzung perfekt. Sehr zu empfehlen!</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">TM</div>
+                    <div class="testimonial-info">
+                        <h4>Thomas M.</h4>
+                        <p>Privatkunde, Hannover</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal stagger-2">
+                <div class="testimonial-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="testimonial-text">Als Gewerbetreibender schätze ich die Zuverlässigkeit und Kompetenz von M&M. Die komplette Elektroinstallation unseres neuen Büros wurde termingerecht fertiggestellt.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SK</div>
+                    <div class="testimonial-info">
+                        <h4>Stefan K.</h4>
+                        <p>Geschäftsführer IT-Firma</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal stagger-3">
+                <div class="testimonial-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="testimonial-text">Unsere PV-Anlage läuft seit einem Jahr einwandfrei. Die Beratung war kompetent und ehrlich. Wir sparen jetzt deutlich bei den Stromkosten!</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">AB</div>
+                    <div class="testimonial-info">
+                        <h4>Andrea B.</h4>
+                        <p>Privatkunde, Garbsen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container reveal">
+            <div class="cta-content">
+                <h2>Ihr Projekt als <span class="gradient-text">nächste Referenz?</span></h2>
+                <p>Kontaktieren Sie uns für eine unverbindliche Beratung. Wir freuen uns darauf, auch Ihr Projekt erfolgreich umzusetzen.</p>
+                <a href="kontakt.html" class="btn-primary">
+                    Projekt besprechen
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">M&M</div>
+                        <div class="logo-text">Elektro <span>Engineering</span></div>
+                    </a>
+                    <p>Ihr zuverlässiger Partner für Smart Home, Gebäudetechnik und nachhaltige Energielösungen in Hannover und Umgebung.</p>
+                    <div class="footer-social">
+                        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Leistungen</h4>
+                    <ul>
+                        <li><a href="leistungen.html#smart-home">Smart Home</a></li>
+                        <li><a href="leistungen.html#pv-anlagen">PV-Anlagen</a></li>
+                        <li><a href="leistungen.html#elektroinstallation">Elektroinstallation</a></li>
+                        <li><a href="leistungen.html#netzwerktechnik">Netzwerktechnik</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Unternehmen</h4>
+                    <ul>
+                        <li><a href="ueber-uns.html">Über Uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="karriere.html">Karriere</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><a href="tel:+4915256534017">+49 152 565 340 17</a></li>
+                        <li><a href="mailto:info@technik-smarthome.de">info@technik-smarthome.de</a></li>
+                        <li><a href="kontakt.html">Nenndorfer Chaussee 18</a></li>
+                        <li><a href="kontakt.html">30453 Hannover</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 M&M Elektro Engineering GmbH. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => mobileNav.classList.remove('active'));
+        });
+
+        // Cursor glow
+        const cursorGlow = document.getElementById('cursorGlow');
+        let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateGlow() {
+            glowX += (mouseX - glowX) * 0.1;
+            glowY += (mouseY - glowY) * 0.1;
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top = glowY + 'px';
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+
+        if (window.innerWidth < 992) cursorGlow.style.display = 'none';
+
+        // Reveal animations
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        
+        function revealOnScroll() {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < window.innerHeight - 150) el.classList.add('active');
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Counter animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let counted = false;
+
+        function animateCounters() {
+            if (counted) return;
+            const statsBar = document.querySelector('.stats-bar');
+            if (statsBar.getBoundingClientRect().top < window.innerHeight - 100) {
+                counted = true;
+                statNumbers.forEach(stat => {
+                    const text = stat.innerText;
+                    if (text.includes('/')) return;
+                    const number = parseInt(text);
+                    const hasPlus = text.includes('+');
+                    const hasPercent = text.includes('%');
+                    let current = 0;
+                    const increment = number / 50;
+                    const suffix = hasPlus ? '+' : hasPercent ? '%' : '';
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= number) {
+                            stat.innerText = number + suffix;
+                            clearInterval(timer);
+                        } else {
+                            stat.innerText = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                });
+            }
+        }
+
+        window.addEventListener('scroll', animateCounters);
+        animateCounters();
+    </script>
+</body>
+</html>
+

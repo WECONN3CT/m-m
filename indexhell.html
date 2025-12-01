@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&M Elektro Engineering GmbH | Smart Home & Elektrotechnik</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0055DD;
+            --primary-glow: #0077FF;
+            --primary-dark: #003399;
+            --accent: #00B4D8;
+            --bg-light: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --bg-elevated: #F1F5F9;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #94A3B8;
+            --border-light: #E2E8F0;
+            --gradient-electric: linear-gradient(135deg, #0055DD 0%, #00B4D8 50%, #0055DD 100%);
+            --gradient-soft: linear-gradient(135deg, #0055DD 0%, #00B4D8 100%);
+            --shadow-glow: 0 0 60px rgba(0, 85, 221, 0.2);
+            --shadow-card: 0 25px 80px rgba(0, 0, 0, 0.08);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-soft);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Animated Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 85, 221, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 85, 221, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            bottom: 20%;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        .bg-orb-3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #FFD700, #FF6B6B);
+            top: 50%;
+            right: 10%;
+            opacity: 0.15;
+            animation: float 18s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 60px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-electric);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 85, 221, 0.3);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--text-primary);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-electric);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-electric);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 85, 221, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 85, 221, 0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 28px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 60px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 85, 221, 0.08);
+            border: 1px solid rgba(0, 85, 221, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero-badge-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(48px, 7vw, 80px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+            color: var(--text-primary);
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient-electric);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient-electric);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 85, 221, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(0, 85, 221, 0.4);
+        }
+
+        .btn-primary svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(5px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-soft);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 85, 221, 0.1);
+            animation: rotateCircle 20s linear infinite;
+        }
+
+        .hero-circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+        }
+
+        .hero-circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            animation-direction: reverse;
+            animation-duration: 15s;
+        }
+
+        .hero-circle:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            animation-duration: 10s;
+        }
+
+        .hero-icon-center {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-electric);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 40px rgba(0, 85, 221, 0.3);
+            z-index: 1;
+        }
+
+        .hero-icon-center svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        @keyframes rotateCircle {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-electric);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 85, 221, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 85, 221, 0.15);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            background: var(--gradient-electric);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(0, 85, 221, 0.08);
+            border: 1px solid rgba(0, 85, 221, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 85, 221, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 85, 221, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 85, 221, 0.12);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-electric);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 30px rgba(0, 85, 221, 0.25);
+        }
+
+        .service-icon svg {
+            width: 35px;
+            height: 35px;
+        }
+
+        .service-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            color: var(--text-primary);
+        }
+
+        .service-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 60px;
+            background: var(--bg-soft);
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .feature-card:hover {
+            transform: scale(1.02);
+            border-color: rgba(0, 85, 221, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 85, 221, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 85, 221, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--gradient-electric);
+            box-shadow: 0 8px 30px rgba(0, 85, 221, 0.3);
+        }
+
+        .feature-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--primary);
+            transition: color 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon svg {
+            color: white;
+        }
+
+        .feature-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .feature-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: var(--gradient-electric);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 85, 221, 0.2);
+        }
+
+        .about-image-main::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: var(--bg-card);
+            border-radius: 27px;
+        }
+
+        .about-image-content {
+            position: absolute;
+            inset: 3px;
+            border-radius: 27px;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-card) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .about-image-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-electric);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 40px rgba(0, 85, 221, 0.3);
+        }
+
+        .about-image-icon svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .about-image-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .about-image-title {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 25px 35px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .about-badge-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            background: var(--gradient-electric);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-badge-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .about-content .section-tag {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .about-content .section-title {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .about-text {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .about-list {
+            list-style: none;
+            display: grid;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .about-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .about-list-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 85, 221, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-list-icon svg {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 80px 60px;
+            background: var(--bg-soft);
+            position: relative;
+            z-index: 1;
+        }
+
+        .partners-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .partners-title {
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .partner-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-muted);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info {
+            padding-right: 60px;
+        }
+
+        .contact-info .section-tag {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .contact-info .section-title {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .contact-text {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .contact-details {
+            display: grid;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-item-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 85, 221, 0.08);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--primary);
+        }
+
+        .contact-item-content h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .contact-item-content p,
+        .contact-item-content a {
+            font-size: 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--primary);
+        }
+
+        .contact-form-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: var(--bg-soft);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 85, 221, 0.1);
+            background: var(--bg-card);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-submit {
+            background: var(--gradient-electric);
+            color: white;
+            border: none;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 85, 221, 0.3);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(0, 85, 221, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-soft);
+            border-top: 1px solid var(--border-light);
+            padding: 80px 60px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 25px;
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-social svg {
+            width: 20px;
+            height: 20px;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover svg {
+            color: white;
+        }
+
+        .footer-links h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: grid;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            font-size: 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-legal a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-visual {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                padding: 120px 30px 60px;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services {
+                padding: 80px 30px;
+            }
+
+            .features {
+                padding: 80px 30px;
+            }
+
+            .about {
+                padding: 80px 30px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .contact {
+                padding: 80px 30px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .contact-info {
+                padding-right: 0;
+            }
+
+            footer {
+                padding: 60px 30px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        /* Animations on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cursor glow effect - subtle for light theme */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 85, 221, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">M&M</div>
+            <div class="logo-text">Elektro <span>Engineering</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#referenzen">Referenzen</a></li>
+            <li><a href="#ueber-uns">Über Uns</a></li>
+            <li><a href="#karriere">Karriere</a></li>
+        </ul>
+        <a href="#kontakt" class="nav-cta">Kontakt</a>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                <span class="hero-badge-text">Über 10 Jahre Erfahrung</span>
+            </div>
+            <h1>Intelligente <span class="gradient-text">Elektrotechnik</span> für die Zukunft</h1>
+            <p>Ihr Experte für Smart Home, Gebäudetechnik und nachhaltige Energielösungen. Wir verwirklichen Ihre Visionen mit modernster Technologie und jahrelanger Expertise.</p>
+            <div class="hero-buttons">
+                <a href="#kontakt" class="btn-primary">
+                    Projekt starten
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#leistungen" class="btn-secondary">
+                    Leistungen entdecken
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-circle"></div>
+            <div class="hero-circle"></div>
+            <div class="hero-circle"></div>
+            <div class="hero-icon-center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card reveal">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Jahre Erfahrung</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Projekte realisiert</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Notdienst verfügbar</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Kundenzufriedenheit</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="leistungen">
+        <div class="section-header reveal">
+            <span class="section-tag">Unsere Leistungen</span>
+            <h2 class="section-title">Maßgeschneiderte Lösungen für jedes Projekt</h2>
+            <p class="section-subtitle">Ob Neubau, Sanierung oder Erweiterung – wir liefern maßgeschneiderte Lösungen rund um Strom, Licht und Energie</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9,22 9,12 15,12 15,22"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Smart Home</h3>
+                <p class="service-desc">Intelligente Gebäudesteuerung für maximalen Komfort. Automatisieren Sie Beleuchtung, Heizung und Sicherheit mit modernster Technologie.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">PV-Anlagen</h3>
+                <p class="service-desc">Nachhaltige Energielösungen mit Photovoltaik. Wir planen und installieren effiziente Solaranlagen für Ihre Unabhängigkeit.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Elektroinstallation</h3>
+                <p class="service-desc">Professionelle Stark- und Schwachstrominstallationen für Gewerbe und Privat. Zuverlässig, sicher und normgerecht.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <path d="M8 21h8M12 17v4"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Netzwerktechnik</h3>
+                <p class="service-desc">Moderne Netzwerkinfrastruktur für Ihr Gebäude. Von der Planung bis zur Installation – alles aus einer Hand.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Beleuchtungsanlagen</h3>
+                <p class="service-desc">Perfekte Lichtkonzepte für jeden Raum. LED-Technik, Lichtsteuerung und energieeffiziente Beleuchtungslösungen.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14,2 14,8 20,8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Gebäudeleittechnik</h3>
+                <p class="service-desc">Zentrale Steuerung und Überwachung aller gebäudetechnischen Anlagen. Effizient, übersichtlich und zukunftssicher.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="referenzen">
+        <div class="section-header reveal">
+            <span class="section-tag">Warum M&M?</span>
+            <h2 class="section-title">Das zeichnet uns aus</h2>
+            <p class="section-subtitle">Qualität, Zuverlässigkeit und Innovation – dafür steht M&M Elektro Engineering</p>
+        </div>
+        <div class="features-container">
+            <div class="feature-card reveal">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Effizienz & Präzision</h3>
+                <p class="feature-desc">Mehr als 10 Jahre Erfahrung. Moderne Technik und erfahrene Profis für zuverlässige Elektroinstallationen.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Schneller Service</h3>
+                <p class="feature-desc">Pünktlich, flexibel und immer für Sie im Einsatz. Unser 24/7 Notdienst ist jederzeit für Sie erreichbar.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Innovative Lösungen</h3>
+                <p class="feature-desc">Grüne Energie und smarte Systeme für die Zukunft. Wir setzen auf nachhaltige und zukunftssichere Technologien.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="partners">
+        <div class="partners-header">
+            <p class="partners-title">Unsere Partner & Referenzen</p>
+        </div>
+        <div class="partners-logos">
+            <span class="partner-logo">HANOVA</span>
+            <span class="partner-logo">LOXONE</span>
+            <span class="partner-logo">SIEMENS</span>
+            <span class="partner-logo">ABB</span>
+            <span class="partner-logo">GIRA</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="ueber-uns">
+        <div class="about-container">
+            <div class="about-image reveal">
+                <div class="about-image-main">
+                    <div class="about-image-content">
+                        <div class="about-image-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="about-image-name">Edvin Muhovic</div>
+                        <div class="about-image-title">Geschäftsführer</div>
+                    </div>
+                </div>
+                <div class="about-badge">
+                    <div class="about-badge-number">10+</div>
+                    <div class="about-badge-text">Jahre Erfahrung</div>
+                </div>
+            </div>
+            <div class="about-content">
+                <span class="section-tag">Über Uns</span>
+                <h2 class="section-title">Ihr Partner für moderne Elektrotechnik</h2>
+                <p class="about-text">Die M&M Elektro Engineering GmbH ist ein Unternehmen mit einem umfassenden Fundus an Erfahrung von über 10 Jahren. Dank unseres fachkundigen Teams können wir Projekte zügig und effizient realisieren. Wir arbeiten planvoll und lösungsorientiert, wobei wir dem Kunden die Möglichkeit bieten, seine Wünsche und Vorstellungen zu verwirklichen.</p>
+                <ul class="about-list">
+                    <li>
+                        <span class="about-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        Langjährige Erfahrung und technisches Know-how
+                    </li>
+                    <li>
+                        <span class="about-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        Zukunftsgerichtete Denkweise und moderne Technologien
+                    </li>
+                    <li>
+                        <span class="about-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        Vielfältige Aus- und Weiterbildung für Mitarbeiter
+                    </li>
+                    <li>
+                        <span class="about-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        Nachhaltige und intelligente Gebäudelösungen
+                    </li>
+                </ul>
+                <a href="#kontakt" class="btn-primary">
+                    Kontaktieren Sie uns
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career CTA -->
+    <section class="features" id="karriere">
+        <div class="section-header reveal">
+            <span class="section-tag">Karriere</span>
+            <h2 class="section-title">Werden Sie Teil unseres Teams</h2>
+            <p class="section-subtitle">Wir suchen engagierte Fachkräfte, die mit uns die Zukunft der Elektrotechnik gestalten wollen</p>
+        </div>
+        <div class="features-container" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
+            <div class="feature-card reveal" style="text-align: center;">
+                <div class="feature-icon" style="margin: 0 auto 30px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="8.5" cy="7" r="4"/>
+                        <line x1="20" y1="8" x2="20" y2="14"/>
+                        <line x1="23" y1="11" x2="17" y2="11"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Aktuelle Stellenangebote</h3>
+                <p class="feature-desc" style="margin-bottom: 30px;">Bei M&M Elektro Engineering bieten wir nicht nur einen Job, sondern eine Karriere mit Perspektive. Profitieren Sie von regelmäßigen Weiterbildungen, einem starken Team und spannenden Projekten.</p>
+                <a href="#kontakt" class="btn-primary" style="display: inline-flex;">
+                    Jetzt bewerben
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontakt">
+        <div class="contact-container">
+            <div class="contact-info reveal">
+                <span class="section-tag">Kontakt</span>
+                <h2 class="section-title">Lassen Sie uns über Ihr Projekt sprechen</h2>
+                <p class="contact-text">Haben Sie Fragen oder möchten Sie ein Projekt mit uns besprechen? Wir freuen uns auf Ihre Nachricht und melden uns schnellstmöglich bei Ihnen.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Adresse</h4>
+                            <p>Nenndorfer Chaussee 18<br>30453 Hannover</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>E-Mail</h4>
+                            <a href="mailto:info@technik-smarthome.de">info@technik-smarthome.de</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Telefon</h4>
+                            <a href="tel:+4915256534017">+49 152 565 340 17</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrapper reveal">
+                <form class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Ihr Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" placeholder="ihre@email.de" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" placeholder="+49 123 456 789">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Betreff</label>
+                        <input type="text" id="subject" placeholder="Worum geht es?">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nachricht</label>
+                        <textarea id="message" placeholder="Beschreiben Sie Ihr Projekt..." required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">M&M</div>
+                        <div class="logo-text">Elektro <span>Engineering</span></div>
+                    </a>
+                    <p>Ihr zuverlässiger Partner für Smart Home, Gebäudetechnik und nachhaltige Energielösungen in Hannover und Umgebung.</p>
+                    <div class="footer-social">
+                        <a href="#">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Leistungen</h4>
+                    <ul>
+                        <li><a href="#leistungen">Smart Home</a></li>
+                        <li><a href="#leistungen">PV-Anlagen</a></li>
+                        <li><a href="#leistungen">Elektroinstallation</a></li>
+                        <li><a href="#leistungen">Netzwerktechnik</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Unternehmen</h4>
+                    <ul>
+                        <li><a href="#ueber-uns">Über Uns</a></li>
+                        <li><a href="#referenzen">Referenzen</a></li>
+                        <li><a href="#karriere">Karriere</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><a href="tel:+4915256534017">+49 152 565 340 17</a></li>
+                        <li><a href="mailto:info@technik-smarthome.de">info@technik-smarthome.de</a></li>
+                        <li><a href="#">Nenndorfer Chaussee 18</a></li>
+                        <li><a href="#">30453 Hannover</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 M&M Elektro Engineering GmbH. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Cursor glow effect
+        const cursorGlow = document.getElementById('cursorGlow');
+        let mouseX = 0, mouseY = 0;
+        let glowX = 0, glowY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateGlow() {
+            glowX += (mouseX - glowX) * 0.1;
+            glowY += (mouseY - glowY) * 0.1;
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top = glowY + 'px';
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+
+        // Hide glow on mobile
+        if (window.innerWidth < 992) {
+            cursorGlow.style.display = 'none';
+        }
+
+        // Reveal animations on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function revealOnScroll() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission (demo)
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.');
+            form.reset();
+        });
+
+        // Counter animation for stats
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let counted = false;
+
+        function animateCounters() {
+            if (counted) return;
+            
+            const statsSection = document.querySelector('.stats');
+            const sectionTop = statsSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (sectionTop < windowHeight - 100) {
+                counted = true;
+                statNumbers.forEach(stat => {
+                    const text = stat.innerText;
+                    const hasPlus = text.includes('+');
+                    const hasPercent = text.includes('%');
+                    const hasSlash = text.includes('/');
+                    
+                    if (hasSlash) return; // Skip 24/7
+                    
+                    const number = parseInt(text);
+                    let current = 0;
+                    const increment = number / 50;
+                    const suffix = hasPlus ? '+' : hasPercent ? '%' : '';
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= number) {
+                            stat.innerText = number + suffix;
+                            clearInterval(timer);
+                        } else {
+                            stat.innerText = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                });
+            }
+        }
+
+        window.addEventListener('scroll', animateCounters);
+        animateCounters(); // Initial check
+    </script>
+</body>
+</html>

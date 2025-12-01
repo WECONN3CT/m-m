@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | M&M Elektro Engineering GmbH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0055DD;
+            --primary-glow: #0077FF;
+            --primary-dark: #003399;
+            --accent: #00B4D8;
+            --bg-light: #FFFFFF;
+            --bg-soft: #F8FAFC;
+            --border-light: #E2E8F0;
+            --bg-dark: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --bg-elevated: #F1F5F9;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #94A3B8;
+            --gradient-electric: linear-gradient(135deg, #0055DD 0%, #00B4D8 50%, #0055DD 100%);
+            --shadow-glow: 0 0 60px rgba(0, 85, 221, 0.2);
+            --shadow-card: 0 25px 80px rgba(0, 0, 0, 0.08);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-soft); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        /* Hide scrollbars (keeps scrolling) */
+        html, body {
+            -ms-overflow-style: none; /* IE/Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 85, 221, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 85, 221, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-orb-1 {
+            width: 600px; height: 600px;
+            background: var(--primary);
+            top: -200px; right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-orb-2 {
+            width: 400px; height: 400px;
+            background: var(--accent);
+            bottom: 20%; left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled { padding: 15px 60px; background: rgba(255, 255, 255, 0.95); box-shadow: var(--shadow-soft); }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px; height: 50px;
+            background: var(--gradient-electric);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.5);
+        }
+
+        .logo-text {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--text-primary);
+        }
+
+        .logo-text span { color: var(--primary); }
+
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; left: 0;
+            width: 0; height: 2px;
+            background: var(--gradient-electric);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--gradient-electric);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0, 102, 255, 0.5); }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 28px; height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .mobile-nav.active { opacity: 1; visibility: visible; }
+
+        .mobile-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover { color: var(--primary); }
+
+        /* Page Hero */
+        .page-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 160px 60px 60px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .page-hero-content { max-width: 900px; }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .page-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(48px, 7vw, 72px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .gradient-text {
+            background: var(--gradient-electric);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 60px 120px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            border-color: rgba(0, 102, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .contact-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-card h3 svg {
+            width: 24px; height: 24px;
+            color: var(--accent);
+        }
+
+        .contact-items {
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item-icon {
+            width: 50px; height: 50px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-item-icon {
+            background: var(--gradient-electric);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .contact-item-icon svg {
+            width: 24px; height: 24px;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover .contact-item-icon svg { color: white; }
+
+        .contact-item-content h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .contact-item-content p,
+        .contact-item-content a {
+            font-size: 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover { color: var(--primary); }
+
+        /* Hours Card */
+        .hours-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .hours-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hours-card h3 svg {
+            width: 24px; height: 24px;
+            color: var(--accent);
+        }
+
+        .hours-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .hours-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .hours-item span:first-child {
+            font-weight: 500;
+        }
+
+        .hours-item span:last-child {
+            color: var(--text-secondary);
+        }
+
+        .emergency-note {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 16px;
+        }
+
+        .emergency-note p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .emergency-note strong {
+            color: var(--accent);
+        }
+
+        /* Contact Form */
+        .contact-form-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            padding: 50px;
+        }
+
+        .contact-form h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .contact-form > p {
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            background: var(--gradient-electric);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 80px rgba(0, 102, 255, 0.5);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0 60px 120px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .map-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            filter: none;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: var(--bg-elevated);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px 35px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .map-overlay h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .map-overlay p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .map-overlay a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .map-overlay a:hover {
+            color: var(--accent);
+        }
+
+        .map-overlay a svg {
+            width: 16px; height: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-soft);
+            border-top: 1px solid var(--border-light);
+            padding: 80px 60px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-container { max-width: 1400px; margin: 0 auto; }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo { margin-bottom: 25px; }
+
+        .footer-brand p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .footer-social { display: flex; gap: 15px; }
+
+        .footer-social a {
+            width: 45px; height: 45px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        .footer-social svg {
+            width: 20px; height: 20px;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover svg { color: white; }
+
+        .footer-links h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .footer-links ul { list-style: none; display: grid; gap: 15px; }
+
+        .footer-links a {
+            font-size: 15px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: var(--primary); }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copyright { font-size: 14px; color: var(--text-muted); }
+
+        .footer-legal { display: flex; gap: 30px; }
+
+        .footer-legal a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover { color: var(--text-secondary); }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        .cursor-glow {
+            position: fixed;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 85, 221, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .contact-container { grid-template-columns: 1fr; gap: 40px; }
+            .footer-top { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 992px) {
+            nav { padding: 15px 30px; }
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .page-hero { padding: 140px 30px 40px; }
+            .contact { padding: 40px 30px 80px; }
+            .map-section { padding: 0 30px 80px; }
+            footer { padding: 60px 30px 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+            .map-overlay { 
+                position: relative;
+                bottom: auto; left: auto;
+                border-radius: 0 0 30px 30px;
+            }
+            .map-wrapper iframe { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">M&M</div>
+            <div class="logo-text">Elektro <span>Engineering</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leistungen.html">Leistungen</a></li>
+            <li><a href="referenzen.html">Referenzen</a></li>
+            <li><a href="ueber-uns.html">Über Uns</a></li>
+            <li><a href="karriere.html">Karriere</a></li>
+        </ul>
+        <a href="kontakt.html" class="nav-cta">Kontakt</a>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="leistungen.html">Leistungen</a>
+        <a href="referenzen.html">Referenzen</a>
+        <a href="ueber-uns.html">Über Uns</a>
+        <a href="karriere.html">Karriere</a>
+        <a href="kontakt.html">Kontakt</a>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="section-tag">Wir sind für Sie da</span>
+            <h1>Kontaktieren Sie <span class="gradient-text">uns</span></h1>
+            <p>Haben Sie Fragen oder möchten Sie ein Projekt besprechen? Wir freuen uns auf Ihre Nachricht!</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card reveal-left">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Kontaktdaten
+                    </h3>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Adresse</h4>
+                                <p>Nenndorfer Chaussee 18<br>30453 Hannover</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Telefon</h4>
+                                <a href="tel:+4915256534017">+49 152 565 340 17</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>E-Mail</h4>
+                                <a href="mailto:info@technik-smarthome.de">info@technik-smarthome.de</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hours-card reveal-left">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Öffnungszeiten
+                    </h3>
+                    <div class="hours-list">
+                        <div class="hours-item">
+                            <span>Montag – Freitag</span>
+                            <span>08:00 – 17:00 Uhr</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Samstag</span>
+                            <span>Nach Vereinbarung</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Sonntag</span>
+                            <span>Geschlossen</span>
+                        </div>
+                    </div>
+                    <div class="emergency-note">
+                        <p><strong>24/7 Notdienst:</strong> Bei elektrischen Notfällen sind wir auch außerhalb der Geschäftszeiten für Sie erreichbar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper reveal-right">
+                <form class="contact-form" id="contactForm">
+                    <h3>Nachricht senden</h3>
+                    <p>Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen.</p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" required placeholder="Ihr Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail *</label>
+                            <input type="email" id="email" required placeholder="ihre@email.de">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" placeholder="+49 123 456 789">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Betreff</label>
+                            <select id="service">
+                                <option value="">Bitte wählen...</option>
+                                <option value="smart-home">Smart Home</option>
+                                <option value="pv-anlage">PV-Anlage</option>
+                                <option value="elektroinstallation">Elektroinstallation</option>
+                                <option value="netzwerk">Netzwerktechnik</option>
+                                <option value="beleuchtung">Beleuchtung</option>
+                                <option value="notdienst">Notdienst</option>
+                                <option value="sonstiges">Sonstiges</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nachricht *</label>
+                        <textarea id="message" required placeholder="Beschreiben Sie Ihr Anliegen..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        Nachricht senden
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container reveal">
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.8!2d9.7!3d52.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDIxJzAwLjAiTiA5wrA0MicwMC4wIkU!5e0!3m2!1sde!2sde!4v1234567890" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-overlay">
+                    <h4>M&M Elektro Engineering GmbH</h4>
+                    <p>Nenndorfer Chaussee 18, 30453 Hannover</p>
+                    <a href="https://maps.google.com/?q=Nenndorfer+Chaussee+18+30453+Hannover" target="_blank" rel="noopener">
+                        Route planen
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">M&M</div>
+                        <div class="logo-text">Elektro <span>Engineering</span></div>
+                    </a>
+                    <p>Ihr zuverlässiger Partner für Smart Home, Gebäudetechnik und nachhaltige Energielösungen in Hannover und Umgebung.</p>
+                    <div class="footer-social">
+                        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Leistungen</h4>
+                    <ul>
+                        <li><a href="leistungen.html#smart-home">Smart Home</a></li>
+                        <li><a href="leistungen.html#pv-anlagen">PV-Anlagen</a></li>
+                        <li><a href="leistungen.html#elektroinstallation">Elektroinstallation</a></li>
+                        <li><a href="leistungen.html#netzwerktechnik">Netzwerktechnik</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Unternehmen</h4>
+                    <ul>
+                        <li><a href="ueber-uns.html">Über Uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="karriere.html">Karriere</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><a href="tel:+4915256534017">+49 152 565 340 17</a></li>
+                        <li><a href="mailto:info@technik-smarthome.de">info@technik-smarthome.de</a></li>
+                        <li><a href="kontakt.html">Nenndorfer Chaussee 18</a></li>
+                        <li><a href="kontakt.html">30453 Hannover</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 M&M Elektro Engineering GmbH. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileMenuBtn.addEventListener('click', () => mobileNav.classList.toggle('active'));
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => mobileNav.classList.remove('active'));
+        });
+
+        // Cursor glow
+        const cursorGlow = document.getElementById('cursorGlow');
+        let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+        function animateGlow() {
+            glowX += (mouseX - glowX) * 0.1;
+            glowY += (mouseY - glowY) * 0.1;
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top = glowY + 'px';
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+        if (window.innerWidth < 992) cursorGlow.style.display = 'none';
+
+        // Reveal animations
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        function revealOnScroll() {
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
+
