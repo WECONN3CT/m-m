@@ -3673,7 +3673,7 @@ html, body {
 /* Logo - Much Larger on Mobile */
 @media (max-width: 992px) {
     .logo-img {
-        height: 55px !important;
+        height: 70px !important;
         width: auto !important;
         transform: scale(1) !important;
         transform-origin: left center;
@@ -3682,13 +3682,13 @@ html, body {
 
 @media (max-width: 768px) {
     .logo-img {
-        height: 52px !important;
+        height: 65px !important;
     }
 }
 
 @media (max-width: 480px) {
     .logo-img {
-        height: 48px !important;
+        height: 60px !important;
     }
 }
 
@@ -4205,7 +4205,7 @@ html, body {
     }
 
     .logo-img {
-        height: 45px !important;
+        height: 55px !important;
     }
 
     nav {
@@ -4231,7 +4231,7 @@ html, body {
     }
 
     .logo-img {
-        height: 48px !important;
+        height: 58px !important;
     }
 
     nav {
@@ -4263,7 +4263,7 @@ html, body {
     }
 
     .logo-img {
-        height: 50px !important;
+        height: 62px !important;
     }
 
     nav {
@@ -4299,7 +4299,7 @@ html, body {
     }
 
     .logo-img {
-        height: 52px !important;
+        height: 64px !important;
     }
 
     nav {
@@ -4332,7 +4332,7 @@ html, body {
     }
 
     .logo-img {
-        height: 55px !important;
+        height: 68px !important;
     }
 
     nav {
@@ -4716,9 +4716,9 @@ html, body {
 
     /* Logo BIGGER on mobile - more visible */
     .logo-img {
-        height: 52px !important;
+        height: 65px !important;
         transform: scale(1) !important;
-        max-width: 220px;
+        max-width: 250px;
     }
 
     /* Navigation consistent styling */
