@@ -2534,8 +2534,8 @@ footer {
 /* Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal.active {
@@ -2545,8 +2545,8 @@ footer {
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-60px);
-    transition: all 0.8s ease;
+    transform: translateX(-40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal-left.active {
@@ -2556,8 +2556,8 @@ footer {
 
 .reveal-right {
     opacity: 0;
-    transform: translateX(60px);
-    transition: all 0.8s ease;
+    transform: translateX(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal-right.active {
@@ -2567,8 +2567,8 @@ footer {
 
 .reveal-scale {
     opacity: 0;
-    transform: scale(0.9);
-    transition: all 0.8s ease;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal-scale.active {
@@ -2576,13 +2576,86 @@ footer {
     transform: scale(1);
 }
 
-/* Staggered animations */
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
-.stagger-5 { transition-delay: 0.5s; }
-.stagger-6 { transition-delay: 0.6s; }
+/* Staggered animations - Desktop */
+.stagger-1 { transition-delay: 0.05s; }
+.stagger-2 { transition-delay: 0.1s; }
+.stagger-3 { transition-delay: 0.15s; }
+.stagger-4 { transition-delay: 0.2s; }
+.stagger-5 { transition-delay: 0.25s; }
+.stagger-6 { transition-delay: 0.3s; }
+
+/* ============================================
+   MOBILE: Simplified & Unified Animations
+   ============================================ */
+@media (max-width: 992px) {
+    /* Unified reveal animation - all same direction */
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .reveal.active,
+    .reveal-left.active,
+    .reveal-right.active,
+    .reveal-scale.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Faster stagger on mobile - more uniform appearance */
+    .stagger-1 { transition-delay: 0s; }
+    .stagger-2 { transition-delay: 0.03s; }
+    .stagger-3 { transition-delay: 0.06s; }
+    .stagger-4 { transition-delay: 0.09s; }
+    .stagger-5 { transition-delay: 0.12s; }
+    .stagger-6 { transition-delay: 0.15s; }
+
+    /* Disable heavy background animations on mobile */
+    .bg-orb {
+        animation: none !important;
+    }
+
+    /* Simplify card hover effects on mobile */
+    .service-card,
+    .feature-card,
+    .value-card,
+    .stat-card,
+    .project-card,
+    .testimonial-card {
+        transition: none;
+    }
+
+    .service-card:hover,
+    .feature-card:hover,
+    .value-card:hover,
+    .stat-card:hover,
+    .project-card:hover,
+    .testimonial-card:hover {
+        transform: none;
+    }
+
+    /* Disable floating animations */
+    .floating-icon,
+    .floating-elements {
+        animation: none !important;
+    }
+
+    /* Disable pulse animations */
+    .hero-badge,
+    .featured-icon {
+        animation: none !important;
+    }
+
+    /* Disable rotating gradient animations */
+    .featured-visual-card::before,
+    .about-image-main::before {
+        animation: none !important;
+    }
+}
 
 /* Cursor glow effect */
 .cursor-glow {
