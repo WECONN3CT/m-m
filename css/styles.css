@@ -3992,3 +3992,10 @@ html, body {
 a, button, .service-card, .feature-card, .value-card {
     -webkit-tap-highlight-color: rgba(0, 85, 221, 0.1);
 }
+
+/* Hide Kontakt Button on Mobile */
+@media (max-width: 992px) {
+    .nav-cta {
+        display: none !important;
+    }
+}

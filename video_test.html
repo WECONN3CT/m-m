@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test für iPhone</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: sans-serif; }
+        video { width: 100%; max-width: 600px; display: block; margin: 20px auto; border-radius: 12px; }
+        .info { max-width: 600px; margin: 0 auto; padding: 20px; background: #f0f0f0; border-radius: 12px; }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h1>Video Test für iPhone</h1>
+        <p>Dieses Video sollte automatisch auf iPhone abgespielt werden:</p>
+    </div>
+    
+    <video autoplay muted loop playsinline webkit-playsinline preload="auto" controls>
+        <source src="videos/licht.mp4" type="video/mp4">
+        Ihr Browser unterstützt das Video-Tag nicht.
+    </video>
+    
+    <div class="info">
+        <h2>Video Attribute:</h2>
+        <ul>
+            <li>✓ autoplay</li>
+            <li>✓ muted (erforderlich für autoplay auf iOS)</li>
+            <li>✓ loop</li>
+            <li>✓ playsinline (verhindert Vollbild auf iOS)</li>
+            <li>✓ webkit-playsinline (für ältere iOS Versionen)</li>
+            <li>✓ preload="auto"</li>
+            <li>✓ controls (für manuelle Kontrolle)</li>
+        </ul>
+    </div>
+</body>
+</html>
