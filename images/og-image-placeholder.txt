@@ -1,0 +1,13 @@
+OG Image Placeholder
+====================
+
+Für Social Media Previews sollte hier ein Bild im Format 1200x630px platziert werden.
+Name: og-image.jpg
+
+Empfohlenes Design:
+- M&M Elektro Engineering Logo
+- Firmenname
+- Slogan: "Smart Home & Elektrotechnik für die Zukunft"
+- Moderne blaue Farbgebung (#0055DD, #00B4D8)
+
+Aktuell wird das Logo (logo.png) als Fallback verwendet.

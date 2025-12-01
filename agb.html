@@ -3,262 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
     <title>AGB | M&M Elektro Engineering GmbH</title>
+    <meta name="description" content="Allgemeine Geschäftsbedingungen der M&M Elektro Engineering GmbH">
+    <meta name="author" content="M&M Elektro Engineering GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0066FF;
-            --accent: #00E5FF;
-            --bg-dark: #0A0A0F;
-            --bg-card: #12121A;
-            --text-primary: #FFFFFF;
-            --text-secondary: #8A8A9A;
-            --text-muted: #5A5A6A;
-            --gradient-electric: linear-gradient(135deg, #0066FF 0%, #00E5FF 50%, #0066FF 100%);
-        }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
-
-        /* Hide scrollbars (keeps scrolling) */
-        html, body {
-            -ms-overflow-style: none; /* IE/Edge */
-            scrollbar-width: none; /* Firefox */
-        }
-        html::-webkit-scrollbar,
-        body::-webkit-scrollbar {
-            display: none;
-            width: 0;
-            height: 0;
-        }
-
-        .bg-grid {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 85, 221, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 85, 221, 0.03) 1px, transparent 1px);
-            background-size: 80px 80px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 20px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        .logo-img {
-            display: block;
-            height: 56px;
-            width: auto;
-        }
-
-        .logo-icon {
-            width: 50px; height: 50px;
-            background: var(--gradient-electric);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 20px;
-            color: white;
-            box-shadow: 0 0 30px rgba(0, 102, 255, 0.5);
-        }
-
-        .logo-text {
-            font-family: 'Sora', sans-serif;
-            font-weight: 700;
-            font-size: 22px;
-            color: var(--text-primary);
-        }
-
-        .logo-text span { color: var(--primary); }
-
-        .nav-links { display: flex; gap: 40px; list-style: none; }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover { color: var(--text-primary); }
-
-        .nav-cta {
-            background: var(--gradient-electric);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-cta:hover { transform: translateY(-2px); }
-
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .mobile-menu-btn span {
-            width: 28px; height: 2px;
-            background: var(--text-primary);
-        }
-
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 160px 60px 100px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .content h1 {
-            font-family: 'Sora', sans-serif;
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 50px;
-            background: var(--gradient-electric);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 24px;
-            padding: 50px;
-            margin-bottom: 30px;
-        }
-
-        .content h2 {
-            font-family: 'Sora', sans-serif;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .content p, .content li {
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-
-        .content ul, .content ol {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .content a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .content a:hover { color: var(--accent); }
-
-        footer {
-            background: var(--bg-soft);
-            border-top: 1px solid var(--border-light);
-            padding: 40px 60px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-copyright { font-size: 14px; color: var(--text-muted); }
-
-        .footer-legal { display: flex; gap: 30px; }
-
-        .footer-legal a {
-            font-size: 14px;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-legal a:hover { color: var(--text-secondary); }
-
-        @media (max-width: 992px) {
-            nav { padding: 15px 30px; }
-            .nav-links, .nav-cta { display: none; }
-            .mobile-menu-btn { display: flex; }
-            .content { padding: 140px 30px 80px; }
-            .logo-img { height: 34px; }
-            .content-card { padding: 30px; }
-        }
-
-        @media (max-width: 768px) {
-            .content h1 { font-size: 36px; }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-        }
-
-        /* Light theme override */
-        :root {
-            --bg-light: #FFFFFF;
-            --bg-soft: #F8FAFC;
-            --bg-dark: #FFFFFF;
-            --bg-card: #FFFFFF;
-            --bg-elevated: #F1F5F9;
-            --primary: #0055DD;
-            --accent: #00B4D8;
-            --text-primary: #0F172A;
-            --text-secondary: #475569;
-            --text-muted: #94A3B8;
-            --gradient-electric: linear-gradient(135deg, #0055DD 0%, #00B4D8 50%, #0055DD 100%);
-            --shadow-glow: 0 0 60px rgba(0, 85, 221, 0.2);
-            --border-light: #E2E8F0;
-        }
-    </style>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.technik-smarthome.de/agb.html">
 </head>
-    <style>
-        .logo-img { transform: scale(3); transform-origin: left center; }
-    </style>
 <body>
-    <div class="bg-grid"></div>
 
-    <nav>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+
+    <nav id="navbar">
         <a href="index.html" class="logo">
             <img class="logo-img" src="images/logo.png" alt="M&M Elektro Engineering Logo">
         </a>
@@ -267,85 +39,79 @@
             <li><a href="leistungen.html">Leistungen</a></li>
             <li><a href="referenzen.html">Referenzen</a></li>
             <li><a href="ueber-uns.html">Über Uns</a></li>
-            <li><a href="karriere.html">Karriere</a></li>
         </ul>
         <a href="kontakt.html" class="nav-cta">Kontakt</a>
-        <div class="mobile-menu-btn"><span></span><span></span><span></span></div>
+        <div class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></div>
     </nav>
 
-    <main class="content">
-        <h1>Allgemeine Geschäftsbedingungen</h1>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="leistungen.html">Leistungen</a>
+        <a href="referenzen.html">Referenzen</a>
+        <a href="ueber-uns.html">Über Uns</a>
+        <a href="kontakt.html">Kontakt</a>
+    </div>
 
-        <div class="content-card">
-            <h2>§ 1 Geltungsbereich</h2>
-            <p>(1) Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen der M&M Elektro Engineering GmbH (nachfolgend "Auftragnehmer") und dem Auftraggeber über Lieferungen und Leistungen aus dem Bereich der Elektrotechnik.</p>
-            <p>(2) Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Auftraggebers werden nur dann Vertragsbestandteil, wenn der Auftragnehmer ihrer Geltung ausdrücklich schriftlich zugestimmt hat.</p>
-            <p>(3) Diese Bedingungen gelten auch für alle zukünftigen Geschäftsbeziehungen, auch wenn sie nicht nochmals ausdrücklich vereinbart werden.</p>
-        </div>
+    <main class="legal-page">
+        <div class="legal-container">
+            <div class="legal-header">
+                <h1><span class="gradient-text">AGB</span></h1>
+                <p>Allgemeine Geschäftsbedingungen der M&M Elektro Engineering GmbH</p>
+            </div>
 
-        <div class="content-card">
-            <h2>§ 2 Vertragsschluss</h2>
-            <p>(1) Angebote des Auftragnehmers sind freibleibend und unverbindlich, sofern nicht ausdrücklich etwas anderes vereinbart wurde.</p>
-            <p>(2) Der Vertrag kommt durch schriftliche Auftragsbestätigung des Auftragnehmers oder durch Ausführung der Leistung zustande.</p>
-            <p>(3) Änderungen oder Ergänzungen des Vertrages bedürfen der Schriftform. Dies gilt auch für die Aufhebung des Schriftformerfordernisses.</p>
-        </div>
+            <div class="legal-section">
+                <h2>§ 1 Geltungsbereich</h2>
+                            <p>(1) Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen der M&M Elektro Engineering GmbH (nachfolgend "Auftragnehmer") und dem Auftraggeber über Lieferungen und Leistungen aus dem Bereich der Elektrotechnik.</p>
+                            <p>(2) Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Auftraggebers werden nur dann Vertragsbestandteil, wenn der Auftragnehmer ihrer Geltung ausdrücklich schriftlich zugestimmt hat.</p>
+                            <p>(3) Diese Bedingungen gelten auch für alle zukünftigen Geschäftsbeziehungen, auch wenn sie nicht nochmals ausdrücklich vereinbart werden.</p>
 
-        <div class="content-card">
-            <h2>§ 3 Leistungsumfang</h2>
-            <p>(1) Der Umfang der zu erbringenden Leistungen ergibt sich aus der Leistungsbeschreibung des Auftragnehmers oder aus einer gesonderten schriftlichen Vereinbarung.</p>
-            <p>(2) Änderungswünsche des Auftraggebers werden nach Möglichkeit berücksichtigt. Durch Änderungen bedingte Mehr- oder Minderkosten werden entsprechend verrechnet.</p>
-            <p>(3) Die Ausführung der Arbeiten erfolgt nach den anerkannten Regeln der Technik sowie den geltenden VDE-Bestimmungen und DIN-Normen.</p>
-        </div>
+                            <h2>§ 2 Vertragsschluss</h2>
+                            <p>(1) Angebote des Auftragnehmers sind freibleibend und unverbindlich, sofern nicht ausdrücklich etwas anderes vereinbart wurde.</p>
+                            <p>(2) Der Vertrag kommt durch schriftliche Auftragsbestätigung des Auftragnehmers oder durch Ausführung der Leistung zustande.</p>
+                            <p>(3) Änderungen oder Ergänzungen des Vertrages bedürfen der Schriftform. Dies gilt auch für die Aufhebung des Schriftformerfordernisses.</p>
 
-        <div class="content-card">
-            <h2>§ 4 Preise und Zahlungsbedingungen</h2>
-            <p>(1) Die Preise verstehen sich netto zuzüglich der jeweils gültigen gesetzlichen Mehrwertsteuer.</p>
-            <p>(2) Rechnungen sind innerhalb von 14 Tagen nach Rechnungsdatum ohne Abzug zahlbar, sofern nicht anders vereinbart.</p>
-            <p>(3) Bei Zahlungsverzug ist der Auftragnehmer berechtigt, Verzugszinsen in gesetzlicher Höhe zu berechnen.</p>
-            <p>(4) Der Auftraggeber ist zur Aufrechnung nur berechtigt, wenn seine Gegenansprüche rechtskräftig festgestellt, unbestritten oder vom Auftragnehmer anerkannt sind.</p>
-        </div>
+                            <h2>§ 3 Leistungsumfang</h2>
+                            <p>(1) Der Umfang der zu erbringenden Leistungen ergibt sich aus der Leistungsbeschreibung des Auftragnehmers oder aus einer gesonderten schriftlichen Vereinbarung.</p>
+                            <p>(2) Änderungswünsche des Auftraggebers werden nach Möglichkeit berücksichtigt. Durch Änderungen bedingte Mehr- oder Minderkosten werden entsprechend verrechnet.</p>
+                            <p>(3) Die Ausführung der Arbeiten erfolgt nach den anerkannten Regeln der Technik sowie den geltenden VDE-Bestimmungen und DIN-Normen.</p>
 
-        <div class="content-card">
-            <h2>§ 5 Ausführungsfristen</h2>
-            <p>(1) Vereinbarte Liefertermine und -fristen gelten nur annähernd, es sei denn, dass ausdrücklich ein fester Termin zugesagt wurde.</p>
-            <p>(2) Ist die Nichteinhaltung der Fristen auf höhere Gewalt, Arbeitskampf oder andere vom Auftragnehmer nicht zu vertretende Umstände zurückzuführen, verlängern sich die Fristen entsprechend.</p>
-            <p>(3) Wird die Leistung durch Umstände verzögert, die der Auftraggeber zu vertreten hat, ist der Auftragnehmer berechtigt, die dadurch entstehenden Mehrkosten in Rechnung zu stellen.</p>
-        </div>
+                            <h2>§ 4 Preise und Zahlungsbedingungen</h2>
+                            <p>(1) Die Preise verstehen sich netto zuzüglich der jeweils gültigen gesetzlichen Mehrwertsteuer.</p>
+                            <p>(2) Rechnungen sind innerhalb von 14 Tagen nach Rechnungsdatum ohne Abzug zahlbar, sofern nicht anders vereinbart.</p>
+                            <p>(3) Bei Zahlungsverzug ist der Auftragnehmer berechtigt, Verzugszinsen in gesetzlicher Höhe zu berechnen.</p>
+                            <p>(4) Der Auftraggeber ist zur Aufrechnung nur berechtigt, wenn seine Gegenansprüche rechtskräftig festgestellt, unbestritten oder vom Auftragnehmer anerkannt sind.</p>
 
-        <div class="content-card">
-            <h2>§ 6 Abnahme</h2>
-            <p>(1) Der Auftraggeber ist verpflichtet, die fertiggestellte Leistung innerhalb von 12 Werktagen nach Fertigstellungsanzeige abzunehmen.</p>
-            <p>(2) Unwesentliche Mängel berechtigen nicht zur Verweigerung der Abnahme.</p>
-            <p>(3) Die Abnahme gilt auch als erfolgt, wenn der Auftraggeber die Leistung nicht innerhalb der genannten Frist abnimmt, obwohl er dazu verpflichtet ist.</p>
-        </div>
+                            <h2>§ 5 Ausführungsfristen</h2>
+                            <p>(1) Vereinbarte Liefertermine und -fristen gelten nur annähernd, es sei denn, dass ausdrücklich ein fester Termin zugesagt wurde.</p>
+                            <p>(2) Ist die Nichteinhaltung der Fristen auf höhere Gewalt, Arbeitskampf oder andere vom Auftragnehmer nicht zu vertretende Umstände zurückzuführen, verlängern sich die Fristen entsprechend.</p>
+                            <p>(3) Wird die Leistung durch Umstände verzögert, die der Auftraggeber zu vertreten hat, ist der Auftragnehmer berechtigt, die dadurch entstehenden Mehrkosten in Rechnung zu stellen.</p>
 
-        <div class="content-card">
-            <h2>§ 7 Gewährleistung</h2>
-            <p>(1) Mängel der Leistung sind dem Auftragnehmer unverzüglich schriftlich anzuzeigen.</p>
-            <p>(2) Bei berechtigten Mängelrügen ist der Auftragnehmer nach seiner Wahl zur Nachbesserung oder Ersatzlieferung berechtigt.</p>
-            <p>(3) Die Gewährleistungsfrist beträgt zwei Jahre ab Abnahme, soweit nicht gesetzlich zwingend längere Fristen gelten.</p>
-            <p>(4) Änderungen oder Eingriffe durch den Auftraggeber oder Dritte ohne vorherige Zustimmung des Auftragnehmers führen zum Erlöschen der Gewährleistung.</p>
-        </div>
+                            <h2>§ 6 Abnahme</h2>
+                            <p>(1) Der Auftraggeber ist verpflichtet, die fertiggestellte Leistung innerhalb von 12 Werktagen nach Fertigstellungsanzeige abzunehmen.</p>
+                            <p>(2) Unwesentliche Mängel berechtigen nicht zur Verweigerung der Abnahme.</p>
+                            <p>(3) Die Abnahme gilt auch als erfolgt, wenn der Auftraggeber die Leistung nicht innerhalb der genannten Frist abnimmt, obwohl er dazu verpflichtet ist.</p>
 
-        <div class="content-card">
-            <h2>§ 8 Haftung</h2>
-            <p>(1) Der Auftragnehmer haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie bei vorsätzlichem oder grob fahrlässigem Handeln.</p>
-            <p>(2) Bei leichter Fahrlässigkeit haftet der Auftragnehmer nur bei Verletzung wesentlicher Vertragspflichten und begrenzt auf den vertragstypischen, vorhersehbaren Schaden.</p>
-            <p>(3) Die Haftung für mittelbare Schäden, insbesondere entgangenen Gewinn, ist ausgeschlossen, soweit gesetzlich zulässig.</p>
-        </div>
+                            <h2>§ 7 Gewährleistung</h2>
+                            <p>(1) Mängel der Leistung sind dem Auftragnehmer unverzüglich schriftlich anzuzeigen.</p>
+                            <p>(2) Bei berechtigten Mängelrügen ist der Auftragnehmer nach seiner Wahl zur Nachbesserung oder Ersatzlieferung berechtigt.</p>
+                            <p>(3) Die Gewährleistungsfrist beträgt zwei Jahre ab Abnahme, soweit nicht gesetzlich zwingend längere Fristen gelten.</p>
+                            <p>(4) Änderungen oder Eingriffe durch den Auftraggeber oder Dritte ohne vorherige Zustimmung des Auftragnehmers führen zum Erlöschen der Gewährleistung.</p>
 
-        <div class="content-card">
-            <h2>§ 9 Eigentumsvorbehalt</h2>
-            <p>(1) Alle gelieferten Waren bleiben bis zur vollständigen Bezahlung aller Forderungen aus der Geschäftsverbindung Eigentum des Auftragnehmers.</p>
-            <p>(2) Bei vertragswidrigem Verhalten des Auftraggebers ist der Auftragnehmer zur Rücknahme der Ware berechtigt.</p>
-        </div>
+                            <h2>§ 8 Haftung</h2>
+                            <p>(1) Der Auftragnehmer haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie bei vorsätzlichem oder grob fahrlässigem Handeln.</p>
+                            <p>(2) Bei leichter Fahrlässigkeit haftet der Auftragnehmer nur bei Verletzung wesentlicher Vertragspflichten und begrenzt auf den vertragstypischen, vorhersehbaren Schaden.</p>
+                            <p>(3) Die Haftung für mittelbare Schäden, insbesondere entgangenen Gewinn, ist ausgeschlossen, soweit gesetzlich zulässig.</p>
 
-        <div class="content-card">
-            <h2>§ 10 Schlussbestimmungen</h2>
-            <p>(1) Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.</p>
-            <p>(2) Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist Hannover, sofern der Auftraggeber Kaufmann ist.</p>
-            <p>(3) Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
-            <p>(4) Stand: Januar 2025</p>
+                            <h2>§ 9 Eigentumsvorbehalt</h2>
+                            <p>(1) Alle gelieferten Waren bleiben bis zur vollständigen Bezahlung aller Forderungen aus der Geschäftsverbindung Eigentum des Auftragnehmers.</p>
+                            <p>(2) Bei vertragswidrigem Verhalten des Auftraggebers ist der Auftragnehmer zur Rücknahme der Ware berechtigt.</p>
+
+                            <h2>§ 10 Schlussbestimmungen</h2>
+                            <p>(1) Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.</p>
+                            <p>(2) Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist Hannover, sofern der Auftraggeber Kaufmann ist.</p>
+                            <p>(3) Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
+                            <p>(4) Stand: Januar 2025</p>
+            </div>
         </div>
     </main>
 
@@ -359,6 +125,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
-
