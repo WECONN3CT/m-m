@@ -3403,3 +3403,162 @@ html, body {
         font-size: 12px !important;
     }
 }
+
+/* Additional Mobile Fixes for Leistungen & Ueber-Uns */
+@media (max-width: 992px) {
+
+    /* Remove extra orb on mobile */
+    .bg-orb-3 {
+        display: none !important;
+    }
+
+    /* Fix page-hero centering */
+    .page-hero {
+        text-align: center;
+        padding: 140px 20px 60px;
+    }
+
+    .page-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Service Detail - Ensure proper stacking */
+    .service-detail-container {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    .service-visual,
+    .service-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Service Visual Card - Prevent overflow */
+    .service-visual-card {
+        padding: 40px 30px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* About Story - Better mobile layout */
+    .about-story {
+        padding: 60px 20px !important;
+    }
+
+    .about-story-container {
+        grid-template-columns: 1fr !important;
+        gap: 40px;
+    }
+
+    .about-story-image,
+    .about-story-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Timeline - Proper alignment */
+    .timeline-container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .timeline-container::before {
+        left: 20px !important;
+    }
+
+    .timeline-item {
+        padding-left: 60px !important;
+        padding-right: 0 !important;
+    }
+
+    .timeline-item::before {
+        left: 11px !important;
+    }
+
+    .timeline-content {
+        max-width: 100%;
+        margin: 0 !important;
+    }
+
+    /* Values Grid - Proper spacing */
+    .values-grid {
+        gap: 20px;
+        padding: 0;
+    }
+
+    .value-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Service Features List - Better mobile display */
+    .service-features-list {
+        gap: 15px;
+    }
+
+    .service-features-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Fix floating elements overflow */
+    .floating-elements {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Even more compact on small mobile */
+    .page-hero {
+        padding: 120px 15px 40px;
+    }
+
+    .service-detail {
+        padding: 60px 15px !important;
+    }
+
+    .about-story {
+        padding: 60px 15px !important;
+    }
+
+    .timeline {
+        padding: 60px 15px !important;
+    }
+
+    .values {
+        padding: 60px 15px !important;
+    }
+
+    /* Timeline - Even more compact */
+    .timeline-container {
+        padding: 0 10px;
+    }
+
+    .timeline-item {
+        padding-left: 50px !important;
+    }
+
+    .timeline-content {
+        padding: 25px 20px;
+    }
+
+    /* Service cards - Smaller padding */
+    .service-visual-card {
+        padding: 30px 20px;
+    }
+
+    .service-visual-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .service-visual-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+}
