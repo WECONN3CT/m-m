@@ -155,7 +155,7 @@ nav.scrolled {
     display: block;
     height: 56px;
     width: auto;
-    transform: scale(3);
+    transform: scale(2);
     transform-origin: left center;
 }
 
@@ -2613,11 +2613,12 @@ footer {
 
 @media (max-width: 992px) {
     nav {
-        padding: 15px 30px;
+        padding: 15px 20px;
     }
 
     .logo-img {
         height: 40px;
+        transform: scale(1) !important;
     }
 
     .nav-links {
@@ -4518,11 +4519,21 @@ html, body {
         -webkit-text-size-adjust: 100%;
     }
 
-    /* iOS safe area (notch) */
+    /* iOS safe area (notch & Dynamic Island) */
     @supports(padding: max(0px)) {
         nav {
             padding-left: max(20px, env(safe-area-inset-left));
             padding-right: max(20px, env(safe-area-inset-right));
+            padding-top: max(15px, env(safe-area-inset-top));
+        }
+
+        .mobile-nav {
+            padding-top: max(100px, calc(env(safe-area-inset-top) + 80px));
+            padding-bottom: max(40px, env(safe-area-inset-bottom));
+        }
+
+        footer {
+            padding-bottom: max(40px, env(safe-area-inset-bottom));
         }
     }
 
@@ -4530,6 +4541,8 @@ html, body {
     input[type="text"],
     input[type="email"],
     input[type="tel"],
+    input[type="number"],
+    input[type="search"],
     textarea,
     select {
         font-size: 16px !important;
@@ -4551,6 +4564,71 @@ html, body {
     input[type="submit"] {
         -webkit-appearance: none;
         border-radius: 12px;
+    }
+}
+
+/* ============================================
+   CRITICAL MOBILE FIXES
+   Prevent horizontal scroll on ALL devices
+   ============================================ */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+@media (max-width: 992px) {
+    /* Prevent any element from causing horizontal scroll */
+    * {
+        max-width: 100%;
+    }
+
+    /* Fix floating/absolute elements that may overflow */
+    .floating-elements,
+    .bg-orb-3,
+    .hero-visual {
+        display: none !important;
+    }
+
+    /* Ensure all containers stay within bounds */
+    .container,
+    section,
+    .hero,
+    .page-hero,
+    nav,
+    footer,
+    .about-container,
+    .services-container,
+    .features-container {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    /* Mobile menu full screen fix */
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999;
+    }
+
+    /* Logo consistent on all mobile */
+    .logo-img {
+        height: 42px !important;
+        transform: scale(1) !important;
+        max-width: 200px;
+    }
+
+    /* Navigation consistent styling */
+    nav {
+        padding: 15px 20px !important;
+    }
+
+    nav.scrolled {
+        padding: 12px 20px !important;
     }
 }
 
