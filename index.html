@@ -157,6 +157,11 @@
             gap: 12px;
             text-decoration: none;
         }
+        .logo-img {
+            display: block;
+            height: 40px;
+            width: auto;
+        }
 
         .logo-icon {
             width: 50px;
@@ -252,6 +257,16 @@
             height: 2px;
             background: var(--text-primary);
             transition: all 0.3s ease;
+        }
+        /* Hamburger -> X (nur sichtbar auf Mobile, Button ist Desktop-verborgen) */
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
 
         /* Mobile Navigation */
@@ -1331,6 +1346,7 @@
                 padding: 15px 30px;
             }
 
+            .logo-img { height: 34px; }
             .nav-links {
                 display: none;
             }
@@ -1380,6 +1396,23 @@
                 color: inherit;
                 text-align: left;
                 align-items: flex-start;
+            }
+            /* Hero-Inhalte auf Mobile sauber zentrieren */
+            .hero-content {
+                text-align: center;
+                margin: 0 auto;
+            }
+            .hero-badge {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
             }
             .about-content .section-tag {
                 background: rgba(0, 102, 255, 0.1);
@@ -1592,8 +1625,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <a href="index.html" class="logo">
-            <div class="logo-icon">M&M</div>
-            <div class="logo-text">Elektro <span>Engineering</span></div>
+            <img class="logo-img" src="images/logo.png" alt="M&M Elektro Engineering Logo">
         </a>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
@@ -1905,8 +1937,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <div class="logo-icon">M&M</div>
-                        <div class="logo-text">Elektro <span>Engineering</span></div>
+                        <img class="logo-img" src="images/logo.png" alt="M&M Elektro Engineering Logo">
                     </a>
                     <p>Ihr zuverlässiger Partner für Smart Home, Gebäudetechnik und nachhaltige Energielösungen in Hannover und Umgebung.</p>
                     <div class="footer-social">
