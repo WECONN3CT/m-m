@@ -3562,3 +3562,433 @@ html, body {
         height: 40px;
     }
 }
+/* ========================================
+   PROFESSIONAL MOBILE OPTIMIZATION
+   - Larger logo on mobile
+   - Better spacing and touch targets
+   - iPhone video fixes
+   - Perfect mobile UX
+   ======================================== */
+
+/* Logo - Much Larger on Mobile */
+@media (max-width: 992px) {
+    .logo-img {
+        height: 50px !important;
+        width: auto !important;
+        transform: scale(1) !important;
+        transform-origin: left center;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-img {
+        height: 45px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-img {
+        height: 42px !important;
+    }
+}
+
+/* Video Optimization for iPhone */
+.about-image-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* iPhone specific fixes */
+    -webkit-playsinline: true;
+    webkit-playsinline: true;
+}
+
+/* Ensure video container is properly sized on mobile */
+@media (max-width: 992px) {
+    .about-image-main {
+        min-height: 400px !important;
+        max-height: 500px !important;
+    }
+
+    .about-image-video {
+        min-height: 400px;
+        max-height: 500px;
+    }
+}
+
+/* Professional Mobile Navigation */
+@media (max-width: 992px) {
+    /* Better nav spacing */
+    nav {
+        padding: 18px 20px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Mobile menu button - larger touch target */
+    .mobile-menu-btn {
+        padding: 10px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-menu-btn span {
+        width: 30px;
+        height: 3px;
+    }
+
+    /* Mobile nav overlay - full screen */
+    .mobile-nav {
+        padding: 100px 40px 40px;
+    }
+
+    .mobile-nav a {
+        padding: 15px 0;
+        font-size: 24px;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Professional Touch Targets */
+@media (max-width: 992px) {
+    /* All buttons - minimum 44px touch target */
+    .btn-primary,
+    .btn-secondary,
+    .nav-cta {
+        min-height: 48px;
+        padding: 16px 32px;
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Service cards - better touch */
+    .service-card {
+        padding: 40px 30px;
+        transition: transform 0.2s ease;
+    }
+
+    .service-card:active {
+        transform: scale(0.98);
+    }
+
+    /* Partner items - prevent text selection */
+    .partner-item {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Professional Typography on Mobile */
+@media (max-width: 992px) {
+    /* Better readability */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    /* Headings - optimal size */
+    h1 {
+        font-size: clamp(32px, 8vw, 48px) !important;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: clamp(24px, 6vw, 36px) !important;
+        line-height: 1.3;
+    }
+
+    h3 {
+        font-size: clamp(20px, 5vw, 28px) !important;
+    }
+
+    /* Body text - comfortable reading */
+    p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    /* Section titles */
+    .section-title {
+        font-size: clamp(28px, 7vw, 42px) !important;
+    }
+}
+
+/* Professional Spacing */
+@media (max-width: 992px) {
+    /* Consistent vertical rhythm */
+    section {
+        padding: 60px 20px !important;
+    }
+
+    .hero {
+        padding: 140px 20px 60px !important;
+        min-height: calc(100vh - 80px);
+    }
+
+    /* Cards - optimal spacing */
+    .stat-card,
+    .service-card,
+    .feature-card,
+    .value-card {
+        margin-bottom: 20px;
+    }
+
+    /* Grid gaps */
+    .stats-container,
+    .services-grid,
+    .features-container,
+    .values-grid {
+        gap: 20px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 50px 15px !important;
+    }
+
+    .hero {
+        padding: 120px 15px 50px !important;
+    }
+}
+
+/* Professional Images & Media */
+@media (max-width: 992px) {
+    /* All images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Founder image - much larger */
+    .founder-image {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 auto;
+    }
+
+    /* Service icons - proper size */
+    .service-icon,
+    .feature-icon,
+    .value-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .service-icon svg,
+    .feature-icon svg,
+    .value-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Professional Forms */
+@media (max-width: 992px) {
+    /* Form inputs - better touch */
+    input,
+    textarea,
+    select {
+        min-height: 48px;
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        padding: 12px 16px;
+        border-radius: 12px;
+    }
+
+    textarea {
+        min-height: 120px;
+    }
+
+    /* Form buttons */
+    button[type="submit"],
+    .btn-primary {
+        width: 100%;
+        min-height: 52px;
+        font-size: 17px;
+        border-radius: 12px;
+        margin-top: 10px;
+    }
+}
+
+/* Professional Footer */
+@media (max-width: 992px) {
+    footer {
+        padding: 50px 20px 30px !important;
+    }
+
+    .footer-top {
+        gap: 35px;
+    }
+
+    .footer-links h4 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .footer-links a {
+        padding: 8px 0;
+        display: block;
+        font-size: 15px;
+    }
+
+    .footer-social a {
+        width: 48px;
+        height: 48px;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Professional Stats */
+@media (max-width: 992px) {
+    .stat-number {
+        font-size: 48px !important;
+        margin-bottom: 12px;
+    }
+
+    .stat-label {
+        font-size: 15px;
+    }
+}
+
+/* Professional About Section */
+@media (max-width: 992px) {
+    .about-story-card {
+        padding: 30px 25px !important;
+        min-height: auto !important;
+    }
+
+    .experience-badge {
+        padding: 25px !important;
+        margin-top: 25px;
+    }
+
+    .founder-quote {
+        font-size: 15px !important;
+        line-height: 1.6;
+    }
+
+    .founder-name {
+        font-size: 20px !important;
+    }
+
+    .founder-title {
+        font-size: 14px !important;
+    }
+}
+
+/* Professional Timeline */
+@media (max-width: 992px) {
+    .timeline-content {
+        padding: 30px 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .timeline-year {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+
+    .timeline-title {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .timeline-desc {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+}
+
+/* Professional CTA Sections */
+@media (max-width: 992px) {
+    .contact-cta-container,
+    .cta-container {
+        padding: 50px 25px !important;
+        border-radius: 24px;
+    }
+
+    .cta-content h2 {
+        font-size: clamp(26px, 6vw, 36px) !important;
+    }
+
+    .cta-content p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+}
+
+/* iPhone Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+    /* iOS Safari specific */
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* Prevent zoom on input focus */
+    input,
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+
+    /* Better video handling */
+    video {
+        -webkit-playsinline: true;
+        playsinline: true;
+    }
+
+    /* Smooth scrolling */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 992px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 100px 20px 40px !important;
+    }
+
+    .page-hero {
+        padding: 100px 20px 40px !important;
+    }
+
+    .mobile-nav {
+        padding: 80px 40px 20px;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+    .logo-img {
+        height: 38px !important;
+    }
+
+    nav {
+        padding: 15px !important;
+    }
+
+    .hero h1 {
+        font-size: 28px !important;
+    }
+
+    section {
+        padding: 40px 12px !important;
+    }
+}
+
+/* Remove tap highlight on all interactive elements */
+* {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+/* Better touch feedback */
+a, button, .service-card, .feature-card, .value-card {
+    -webkit-tap-highlight-color: rgba(0, 85, 221, 0.1);
+}
