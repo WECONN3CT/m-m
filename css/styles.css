@@ -3999,3 +3999,619 @@ a, button, .service-card, .feature-card, .value-card {
         display: none !important;
     }
 }
+/* ========================================
+   ULTIMATE MOBILE OPTIMIZATION
+   Optimized for ALL devices - iPhone & Android
+   Tested on: iPhone SE to iPhone 15 Pro Max
+              Samsung Galaxy to Google Pixel
+   ======================================== */
+
+/* Base Mobile Foundation - ALL devices */
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* Prevent horizontal scroll globally */
+* {
+    max-width: 100%;
+}
+
+/* Safe area for iPhones with notch */
+@supports(padding: max(0px)) {
+    body {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+    }
+}
+
+/* ============================================
+   VIEWPORT: 320px - 359px (Very Small Phones)
+   Devices: Older iPhones, small Androids
+   ============================================ */
+@media (max-width: 359px) {
+    /* Ultra compact spacing */
+    section {
+        padding: 40px 12px !important;
+    }
+
+    .hero {
+        padding: 100px 12px 40px !important;
+    }
+
+    /* Smaller typography */
+    .hero h1 {
+        font-size: 28px !important;
+        line-height: 1.1;
+    }
+
+    .section-title {
+        font-size: 24px !important;
+    }
+
+    h2 {
+        font-size: 22px !important;
+    }
+
+    /* Logo ultra compact */
+    .logo-img {
+        height: 36px !important;
+    }
+
+    nav {
+        padding: 12px 10px !important;
+    }
+
+    /* Buttons full width */
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        font-size: 14px;
+        padding: 14px 20px;
+    }
+
+    /* Cards more compact */
+    .service-card,
+    .feature-card,
+    .value-card {
+        padding: 25px 20px;
+    }
+
+    /* Stats smaller */
+    .stat-number {
+        font-size: 36px !important;
+    }
+}
+
+/* ============================================
+   VIEWPORT: 360px - 374px (Small Android)
+   Devices: Samsung Galaxy S, older Pixels
+   ============================================ */
+@media (min-width: 360px) and (max-width: 374px) {
+    section {
+        padding: 45px 15px !important;
+    }
+
+    .hero {
+        padding: 110px 15px 45px !important;
+    }
+
+    .hero h1 {
+        font-size: 32px !important;
+    }
+
+    .logo-img {
+        height: 38px !important;
+    }
+
+    nav {
+        padding: 14px 15px !important;
+    }
+}
+
+/* ============================================
+   VIEWPORT: 375px - 389px (iPhone SE, 12/13 mini)
+   Devices: iPhone SE (2020-2023), iPhone 12/13 mini
+   ============================================ */
+@media (min-width: 375px) and (max-width: 389px) {
+    section {
+        padding: 50px 18px !important;
+    }
+
+    .hero {
+        padding: 120px 18px 50px !important;
+    }
+
+    .hero h1 {
+        font-size: 36px !important;
+    }
+
+    .logo-img {
+        height: 40px !important;
+    }
+
+    nav {
+        padding: 16px 18px !important;
+    }
+
+    /* iPhone SE specific */
+    .about-image-main {
+        min-height: 350px !important;
+        max-height: 450px !important;
+    }
+}
+
+/* ============================================
+   VIEWPORT: 390px - 411px (iPhone 12/13/14)
+   Devices: iPhone 12, 13, 14, 14 Pro
+   ============================================ */
+@media (min-width: 390px) and (max-width: 411px) {
+    section {
+        padding: 55px 20px !important;
+    }
+
+    .hero {
+        padding: 130px 20px 55px !important;
+    }
+
+    .hero h1 {
+        font-size: 38px !important;
+    }
+
+    .logo-img {
+        height: 42px !important;
+    }
+
+    nav {
+        padding: 18px 20px !important;
+    }
+
+    /* Optimal for this size */
+    .about-image-main {
+        min-height: 400px !important;
+        max-height: 500px !important;
+    }
+
+    .founder-image {
+        max-width: 100% !important;
+    }
+}
+
+/* ============================================
+   VIEWPORT: 412px - 427px (Google Pixel, OnePlus)
+   Devices: Pixel 4/5/6/7, OnePlus 8/9
+   ============================================ */
+@media (min-width: 412px) and (max-width: 427px) {
+    section {
+        padding: 60px 22px !important;
+    }
+
+    .hero {
+        padding: 135px 22px 60px !important;
+    }
+
+    .hero h1 {
+        font-size: 40px !important;
+    }
+
+    .logo-img {
+        height: 44px !important;
+    }
+
+    nav {
+        padding: 18px 22px !important;
+    }
+
+    /* Android specific optimizations */
+    input, textarea, select {
+        font-size: 16px !important;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+}
+
+/* ============================================
+   VIEWPORT: 428px+ (iPhone Pro Max, Plus)
+   Devices: iPhone 14 Plus, 14 Pro Max, 15 Pro Max
+   ============================================ */
+@media (min-width: 428px) and (max-width: 767px) {
+    section {
+        padding: 60px 25px !important;
+    }
+
+    .hero {
+        padding: 140px 25px 60px !important;
+    }
+
+    .hero h1 {
+        font-size: 42px !important;
+    }
+
+    .logo-img {
+        height: 46px !important;
+    }
+
+    nav {
+        padding: 20px 25px !important;
+    }
+
+    /* More breathing room on larger phones */
+    .service-card,
+    .feature-card,
+    .value-card {
+        padding: 45px 35px;
+    }
+
+    .about-image-main {
+        min-height: 450px !important;
+        max-height: 550px !important;
+    }
+}
+
+/* ============================================
+   UNIVERSAL MOBILE OPTIMIZATIONS
+   Applies to ALL mobile devices (< 992px)
+   ============================================ */
+@media (max-width: 991px) {
+
+    /* Typography - Perfect readability */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p {
+        font-size: 16px !important;
+        line-height: 1.7;
+    }
+
+    /* All containers full width */
+    .hero-content,
+    .about-container,
+    .services-grid,
+    .stats-container,
+    .features-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* All grids single column */
+    .stats-container,
+    .services-grid,
+    .features-container,
+    .values-grid,
+    .certifications-grid,
+    .team-stats {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Service detail stacking */
+    .service-detail-container,
+    .about-story-container,
+    .about-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Videos responsive */
+    video {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+
+    /* Hide desktop elements */
+    .hero-visual,
+    .floating-elements,
+    .bg-orb-3 {
+        display: none !important;
+    }
+
+    /* Touch-friendly buttons */
+    .btn-primary,
+    .btn-secondary,
+    button {
+        min-height: 48px;
+        padding: 14px 24px;
+        font-size: 16px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        touch-action: manipulation;
+    }
+
+    /* Forms - iOS safe */
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+        min-height: 48px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    textarea {
+        min-height: 120px;
+    }
+
+    /* Navigation touch-friendly */
+    .nav-links a,
+    .mobile-nav a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    /* Cards optimal spacing */
+    .service-card,
+    .feature-card,
+    .value-card,
+    .stat-card {
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Timeline mobile-optimized */
+    .timeline-container {
+        padding: 0 15px;
+    }
+
+    .timeline-container::before {
+        left: 15px !important;
+    }
+
+    .timeline-item {
+        padding-left: 55px !important;
+        padding-right: 0 !important;
+    }
+
+    .timeline-item::before {
+        left: 6px !important;
+    }
+
+    /* Footer mobile */
+    footer {
+        padding: 50px 20px 30px !important;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr !important;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    /* Partner marquee contained */
+    .partner-marquee {
+        overflow: hidden;
+        max-width: 100vw;
+    }
+
+    /* Experience badge mobile */
+    .experience-badge {
+        position: relative !important;
+        bottom: auto !important;
+        right: auto !important;
+        margin-top: 20px;
+        max-width: 100%;
+    }
+
+    /* About content stacking */
+    .about-content {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        transform: none !important;
+        max-width: 100%;
+        padding: 30px 20px;
+    }
+
+    /* Service visual no overflow */
+    .service-visual-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 35px 25px;
+    }
+
+    /* CTA sections */
+    .contact-cta-container,
+    .cta-container {
+        padding: 50px 25px !important;
+    }
+
+    /* Map mobile */
+    .map-wrapper iframe {
+        height: 300px;
+    }
+
+    .map-overlay {
+        position: relative;
+        bottom: auto;
+        left: auto;
+    }
+}
+
+/* ============================================
+   LANDSCAPE MODE - ALL PHONES
+   When phone is rotated horizontally
+   ============================================ */
+@media (max-width: 991px) and (orientation: landscape) {
+    .hero {
+        min-height: auto !important;
+        padding: 80px 20px 40px !important;
+    }
+
+    .page-hero {
+        padding: 80px 20px 40px !important;
+    }
+
+    nav {
+        padding: 12px 20px !important;
+    }
+
+    .mobile-nav {
+        padding: 70px 30px 20px;
+        overflow-y: auto;
+    }
+
+    /* Compact sections in landscape */
+    section {
+        padding: 40px 20px !important;
+    }
+
+    .about-image-main {
+        max-height: 60vh !important;
+    }
+}
+
+/* ============================================
+   ANDROID SPECIFIC FIXES
+   ============================================ */
+@media (max-width: 991px) {
+    /* Android Chrome address bar compensation */
+    .hero {
+        min-height: calc(100vh - 56px);
+    }
+
+    /* Android form styling */
+    select {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 20px;
+        padding-right: 40px;
+    }
+
+    /* Android tap highlight */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    a, button {
+        -webkit-tap-highlight-color: rgba(0, 85, 221, 0.1);
+    }
+}
+
+/* ============================================
+   iPHONE SPECIFIC FIXES
+   ============================================ */
+@supports (-webkit-touch-callout: none) {
+    /* iOS specific */
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* iOS safe area (notch) */
+    @supports(padding: max(0px)) {
+        nav {
+            padding-left: max(20px, env(safe-area-inset-left));
+            padding-right: max(20px, env(safe-area-inset-right));
+        }
+    }
+
+    /* iOS input zoom prevention */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
+
+    /* iOS video playback */
+    video {
+        -webkit-playsinline: true;
+        playsinline: true;
+    }
+
+    /* iOS smooth scrolling */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* iOS button styling */
+    button,
+    input[type="submit"] {
+        -webkit-appearance: none;
+        border-radius: 12px;
+    }
+}
+
+/* ============================================
+   TABLET (768px - 991px)
+   iPads, Android tablets
+   ============================================ */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* 2 columns on tablet */
+    .stats-container,
+    .values-grid,
+    .certifications-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px;
+    }
+
+    /* Services still single column */
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Larger logo on tablet */
+    .logo-img {
+        height: 48px !important;
+    }
+
+    /* More spacing on tablet */
+    section {
+        padding: 70px 35px !important;
+    }
+
+    .hero {
+        padding: 150px 35px 70px !important;
+    }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+@media (max-width: 991px) {
+    /* GPU acceleration for smooth animations */
+    .service-card,
+    .feature-card,
+    .value-card,
+    .stat-card {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    /* Optimize animations */
+    * {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    /* Reduce animation complexity on mobile */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
