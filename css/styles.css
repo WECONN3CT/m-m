@@ -1145,6 +1145,20 @@ nav.scrolled {
     color: var(--text-primary);
 }
 
+.partners-logos .partner-logo-img {
+    height: 160px;
+    width: auto;
+    max-width: 320px;
+    object-fit: contain;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.partners-logos .partner-logo-img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 /* Partner Marquee */
 .partner-marquee {
     position: relative;
@@ -1154,7 +1168,7 @@ nav.scrolled {
     backdrop-filter: saturate(180%) blur(14px);
     border-top: 1px solid rgba(226, 232, 240, 0.6);
     border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-    padding: 28px 0;
+    padding: 18px 0;
     z-index: 1;
 }
 
@@ -1199,6 +1213,22 @@ nav.scrolled {
 .partner-item:hover {
     color: rgba(0, 85, 221, 0.45);
     text-shadow: 0 0 10px rgba(0, 102, 255, 0.15);
+}
+
+/* Partner Logo Images */
+.partner-logo-img {
+    height: 150px;
+    width: auto;
+    max-width: 320px;
+    object-fit: contain;
+    opacity: 0.4;
+    margin: -40px 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.partner-item-logo:hover .partner-logo-img {
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .partner-dot {
@@ -2162,7 +2192,7 @@ nav.scrolled {
 
 .contact-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 15px;
 }
 

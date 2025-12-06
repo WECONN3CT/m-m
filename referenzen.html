@@ -112,6 +112,18 @@
             color: var(--text-primary);
         }
 
+        .partner-card .partner-logo-img {
+            max-width: 120px;
+            max-height: 50px;
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover .partner-logo-img {
+            filter: grayscale(0%) opacity(1);
+        }
+
         .partner-card p {
             font-size: 13px;
             color: var(--text-muted);
@@ -629,7 +641,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <a href="index.html" class="logo">
-            <img class="logo-img" src="images/logo.png" alt="M&M Elektro Engineering Logo">
+            <img class="logo-img" src="images/m&m logo.png" alt="M&M Elektro Engineering Logo">
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -694,7 +706,7 @@
         </div>
         <div class="partners-grid">
             <div class="partner-card reveal stagger-1">
-                <span class="partner-logo">HANOVA</span>
+                <img src="images/kunden/hanova.png" alt="HANOVA Logo" class="partner-logo-img">
                 <p>Wohnungsbau</p>
             </div>
             <div class="partner-card reveal stagger-2">
@@ -1008,7 +1020,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <img class="logo-img" src="images/logo.png" alt="M&M Elektro Engineering Logo">
+                        <img class="logo-img" src="images/m&m logo.png" alt="M&M Elektro Engineering Logo">
                     </a>
                     <p>Ihr zuverlässiger Partner für Smart Home, Gebäudetechnik und nachhaltige Energielösungen in Hannover und Umgebung.</p>
                 </div>
