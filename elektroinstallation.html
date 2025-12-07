@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Elektroinstallation Hannover | M&M Elektro Engineering GmbH</title>
+    <meta name="description" content="Professionelle Elektroinstallation in Hannover. Neubau, Sanierung, Gewerbe & Privat. ✓ 24/7 Notdienst ✓ Zähler & Verteiler ✓ Stark- & Schwachstrom">
+    <meta name="keywords" content="Elektroinstallation Hannover, Elektriker Hannover, Elektro Notdienst, Elektrofirma">
+    <meta name="author" content="M&M Elektro Engineering GmbH">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.technik-smarthome.de/elektroinstallation.html">
+    <meta property="og:title" content="Elektroinstallation Hannover | M&M Elektro Engineering">
+    <meta property="og:description" content="Professionelle Elektroinstallation in Hannover. Neubau, Sanierung, Gewerbe & Privat.">
+    <meta property="og:image" content="https://www.technik-smarthome.de/images/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Page-specific styles -->
+    <style>
+        /* Service Hero */
+        .service-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 60px 80px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .service-hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .service-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .service-hero-desc {
+            font-size: 20px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .service-hero-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--primary);
+        }
+
+        .hero-badge span {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .service-hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-visual-main {
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-electric);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 100px rgba(0, 102, 255, 0.3);
+            transform: rotate(-5deg);
+        }
+
+        .hero-visual-main svg {
+            width: 160px;
+            height: 160px;
+            stroke: white;
+            stroke-width: 1;
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            background: white;
+            border-radius: 20px;
+            padding: 20px 25px;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hero-floating-card:nth-child(2) {
+            top: -20px;
+            right: -30px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-floating-card:nth-child(3) {
+            bottom: 30px;
+            left: -40px;
+            animation: float 4s ease-in-out infinite 1s;
+        }
+
+        .hero-floating-card:nth-child(4) {
+            bottom: -20px;
+            right: 40px;
+            animation: float 4s ease-in-out infinite 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary);
+        }
+
+        .floating-text {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 120px 60px;
+            background: var(--bg-soft);
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+
+        .service-box {
+            background: white;
+            border-radius: 24px;
+            padding: 45px;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+            display: flex;
+            gap: 25px;
+        }
+
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-card);
+            border-color: rgba(0, 102, 255, 0.2);
+        }
+
+        .service-box-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-electric);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .service-box-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: white;
+        }
+
+        .service-box-content h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .service-box-content p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .service-box-content ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .service-box-content ul li {
+            background: var(--bg-soft);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Emergency Section */
+        .emergency-section {
+            padding: 120px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .emergency-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            border-radius: 40px;
+            padding: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emergency-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .emergency-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+
+        .emergency-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .emergency-tag svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .emergency-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .emergency-content p {
+            font-size: 18px;
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .emergency-features {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .emergency-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        .emergency-feature svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .emergency-card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .emergency-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .emergency-icon svg {
+            width: 50px;
+            height: 50px;
+            stroke: white;
+        }
+
+        .emergency-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .emergency-phone {
+            font-family: 'Sora', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: #DC2626;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .emergency-phone:hover {
+            transform: scale(1.05);
+        }
+
+        .emergency-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 120px 60px;
+            background: var(--bg-soft);
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 60px auto 0;
+        }
+
+        .process-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .process-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .process-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            width: 40px;
+            height: 2px;
+            background: var(--border-light);
+        }
+
+        .process-card:last-child::after {
+            display: none;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-electric);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-family: 'Sora', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .process-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .process-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Certifications Section */
+        .certifications-section {
+            padding: 120px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cert-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .cert-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--primary);
+        }
+
+        .cert-card h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .cert-card p {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 120px 60px;
+            background: var(--bg-soft);
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-soft);
+        }
+
+        .faq-question h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--primary);
+        }
+
+        .faq-item.active .faq-icon svg {
+            stroke: white;
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-answer-content {
+            padding: 0 30px 25px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        /* CTA Section */
+        .service-cta {
+            padding: 120px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-cta-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--gradient-electric);
+            border-radius: 40px;
+            padding: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-cta-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .service-cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-cta h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .service-cta p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-cta .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-cta .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .service-hero-container,
+            .emergency-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .service-hero-badges {
+                justify-content: center;
+            }
+
+            .hero-visual-main {
+                width: 320px;
+                height: 320px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid,
+            .certifications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-card::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .service-hero,
+            .services-section,
+            .emergency-section,
+            .process-section,
+            .certifications-section,
+            .faq-section,
+            .service-cta {
+                padding: 80px 20px;
+            }
+
+            .emergency-container {
+                padding: 50px 30px;
+                border-radius: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .process-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-visual-main {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-visual-main svg {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hero-floating-card {
+                display: none;
+            }
+
+            .service-cta-container {
+                padding: 50px 30px;
+                border-radius: 24px;
+            }
+
+            .service-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .service-box-content ul {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">
+            <img class="logo-img" src="images/m&m logo.png" alt="M&M Elektro Engineering Logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leistungen.html" class="active">Leistungen</a></li>
+            <li><a href="referenzen.html">Referenzen</a></li>
+            <li><a href="ueber-uns.html">Über Uns</a></li>
+        </ul>
+        <a href="kontakt.html" class="nav-cta">Kontakt</a>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="leistungen.html">Leistungen</a>
+        <a href="referenzen.html">Referenzen</a>
+        <a href="ueber-uns.html">Über Uns</a>
+        <a href="kontakt.html">Kontakt</a>
+    </div>
+
+    <!-- Service Hero -->
+    <section class="service-hero">
+        <div class="service-hero-container">
+            <div class="service-hero-content">
+                <span class="section-tag">Professionell & Zuverlässig</span>
+                <h1>Elektro<span class="gradient-text">installation</span></h1>
+                <p class="service-hero-desc">Professionelle Elektroinstallationen für Neubau, Sanierung und Erweiterung. Von der Planung bis zur Fertigstellung – fachgerecht, termingerecht und zu fairen Preisen.</p>
+                <div class="service-hero-badges">
+                    <div class="hero-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>24/7 Notdienst</span>
+                    </div>
+                    <div class="hero-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>VDE-geprüft</span>
+                    </div>
+                    <div class="hero-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Festpreisgarantie</span>
+                    </div>
+                </div>
+                <a href="kontakt.html" class="btn-primary">
+                    Angebot anfragen
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="service-hero-visual">
+                <div class="hero-visual-main">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <div class="hero-floating-card">
+                    <div class="floating-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        </svg>
+                    </div>
+                    <div class="floating-text">Neubau</div>
+                </div>
+                <div class="hero-floating-card">
+                    <div class="floating-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        </svg>
+                    </div>
+                    <div class="floating-text">Sanierung</div>
+                </div>
+                <div class="hero-floating-card">
+                    <div class="floating-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <div class="floating-text">Gewerbe</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="section-header reveal">
+            <span class="section-tag">Leistungsspektrum</span>
+            <h2 class="section-title">Unsere <span class="gradient-text">Elektro-Services</span></h2>
+            <p class="section-subtitle">Vom Eigenheim bis zum Industriebetrieb – wir sind Ihr Partner für alle Elektroarbeiten</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-box reveal stagger-1">
+                <div class="service-box-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9,22 9,12 15,12 15,22"/>
+                    </svg>
+                </div>
+                <div class="service-box-content">
+                    <h3>Neubau-Installation</h3>
+                    <p>Komplette Elektroinstallation für Ihren Neubau. Von der Planung über die Installation bis zur Abnahme – alles aus einer Hand.</p>
+                    <ul>
+                        <li>Planungsberatung</li>
+                        <li>Leitungsverlegung</li>
+                        <li>Zähleranlage</li>
+                        <li>Abnahme</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-box reveal stagger-2">
+                <div class="service-box-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                </div>
+                <div class="service-box-content">
+                    <h3>Sanierung & Modernisierung</h3>
+                    <p>Erneuerung veralteter Elektroinstallationen. Wir bringen Ihre Anlage auf den neuesten Stand der Technik.</p>
+                    <ul>
+                        <li>Altbausanierung</li>
+                        <li>Sicherungskasten</li>
+                        <li>FI-Schutzschalter</li>
+                        <li>E-Check</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-box reveal stagger-3">
+                <div class="service-box-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <div class="service-box-content">
+                    <h3>Gewerbe & Industrie</h3>
+                    <p>Professionelle Elektrolösungen für Unternehmen. Leistungsstarke Installationen für hohe Anforderungen.</p>
+                    <ul>
+                        <li>Drehstromanschlüsse</li>
+                        <li>Maschinenanbindung</li>
+                        <li>USV-Anlagen</li>
+                        <li>Prüfservice</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="service-box reveal stagger-4">
+                <div class="service-box-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <path d="M3 9h18M9 21V9"/>
+                    </svg>
+                </div>
+                <div class="service-box-content">
+                    <h3>Zähler- & Verteilerbau</h3>
+                    <p>Normgerechte Elektroverteilung und Sicherungstechnik. Professioneller Aufbau nach aktuellen Vorschriften.</p>
+                    <ul>
+                        <li>Zählerschränke</li>
+                        <li>Unterverteilungen</li>
+                        <li>Überspannungsschutz</li>
+                        <li>Erdung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Section -->
+    <section class="emergency-section">
+        <div class="emergency-container reveal">
+            <div class="emergency-content">
+                <div class="emergency-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Rund um die Uhr
+                </div>
+                <h2>24/7 Elektro-Notdienst</h2>
+                <p>Elektrischer Notfall? Kurzschluss, Stromausfall oder defekte Sicherung? Unser Notdienst ist rund um die Uhr für Sie da – auch an Wochenenden und Feiertagen.</p>
+                <div class="emergency-features">
+                    <div class="emergency-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Schnelle Reaktionszeit (meist unter 60 Min.)
+                    </div>
+                    <div class="emergency-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Faire, transparente Preise
+                    </div>
+                    <div class="emergency-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Kompetente Fachkräfte
+                    </div>
+                </div>
+            </div>
+            <div class="emergency-card">
+                <div class="emergency-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <h3>Notdienst-Hotline</h3>
+                <a href="tel:+4915256534017" class="emergency-phone">+49 152 565 340 17</a>
+                <p>Direkt anrufen – wir sind sofort für Sie da!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="section-header reveal">
+            <span class="section-tag">Ablauf</span>
+            <h2 class="section-title">So arbeiten <span class="gradient-text">wir</span></h2>
+            <p class="section-subtitle">Transparenter Projektablauf von Anfang bis Ende</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card reveal stagger-1">
+                <div class="process-number">1</div>
+                <h3>Anfrage & Beratung</h3>
+                <p>Kostenlose Erstberatung vor Ort. Wir analysieren Ihre Anforderungen und besprechen die Möglichkeiten.</p>
+            </div>
+            <div class="process-card reveal stagger-2">
+                <div class="process-number">2</div>
+                <h3>Planung & Angebot</h3>
+                <p>Detaillierte Planung und transparentes Festpreisangebot ohne versteckte Kosten.</p>
+            </div>
+            <div class="process-card reveal stagger-3">
+                <div class="process-number">3</div>
+                <h3>Installation</h3>
+                <p>Fachgerechte Ausführung durch qualifizierte Elektriker. Sauber und termingerecht.</p>
+            </div>
+            <div class="process-card reveal stagger-4">
+                <div class="process-number">4</div>
+                <h3>Abnahme & Service</h3>
+                <p>Gemeinsame Endabnahme und Dokumentation. Bei Bedarf regelmäßige Wartung.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section">
+        <div class="section-header reveal">
+            <span class="section-tag">Qualität</span>
+            <h2 class="section-title">Geprüfte <span class="gradient-text">Qualität</span></h2>
+            <p class="section-subtitle">Zertifiziert nach höchsten Standards für Ihre Sicherheit</p>
+        </div>
+        <div class="certifications-grid">
+            <div class="cert-card reveal stagger-1">
+                <div class="cert-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h4>VDE-geprüft</h4>
+                <p>Nach aktuellen Normen</p>
+            </div>
+            <div class="cert-card reveal stagger-2">
+                <div class="cert-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <circle cx="12" cy="8" r="7"/>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                    </svg>
+                </div>
+                <h4>Meisterbetrieb</h4>
+                <p>Qualifizierte Fachkräfte</p>
+            </div>
+            <div class="cert-card reveal stagger-3">
+                <div class="cert-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
+                <h4>Haftpflicht</h4>
+                <p>Vollversichert</p>
+            </div>
+            <div class="cert-card reveal stagger-4">
+                <div class="cert-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                </div>
+                <h4>Dokumentation</h4>
+                <p>Lückenlose Protokolle</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header reveal">
+            <span class="section-tag">FAQ</span>
+            <h2 class="section-title">Häufig gestellte <span class="gradient-text">Fragen</span></h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Was kostet eine Elektroinstallation im Neubau?</h3>
+                    <div class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Die Kosten hängen von der Größe und Ausstattung ab. Für ein durchschnittliches Einfamilienhaus rechnen Sie mit ca. 3-5% der Bausumme. Wir erstellen Ihnen gerne ein individuelles Angebot nach Ihren Wünschen.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Wann ist ein E-Check sinnvoll?</h3>
+                    <div class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Ein E-Check ist alle 4 Jahre empfehlenswert, bei älteren Anlagen oder nach einem Eigentümerwechsel. Er prüft die Sicherheit Ihrer Elektroinstallation und deckt potenzielle Gefahrenquellen auf.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Kann ich während der Installation im Haus wohnen?</h3>
+                    <div class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Bei kleineren Arbeiten ja, bei umfangreichen Sanierungen kann es sinnvoll sein, vorübergehend auszuziehen. Wir besprechen dies im Vorfeld und planen die Arbeiten so, dass die Beeinträchtigung minimal ist.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Wie schnell können Sie einen Termin machen?</h3>
+                    <div class="faq-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Für Notfälle sind wir sofort da. Reguläre Termine können wir meist innerhalb einer Woche einrichten. Bei größeren Projekten stimmen wir den Zeitplan individuell mit Ihnen ab.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="service-cta">
+        <div class="service-cta-container">
+            <div class="service-cta-content">
+                <h2>Elektroprojekt geplant?</h2>
+                <p>Kontaktieren Sie uns für eine kostenlose Beratung. Wir erstellen Ihnen ein transparentes Angebot für Ihr Projekt.</p>
+                <a href="kontakt.html" class="btn-white">
+                    Jetzt Angebot anfragen
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img class="logo-img" src="images/m&m logo.png" alt="M&M Elektro Engineering Logo">
+                    </a>
+                    <p>Ihr zuverlässiger Partner für Smart Home, Gebäudetechnik und nachhaltige Energielösungen in Hannover und Umgebung.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Leistungen</h4>
+                    <ul>
+                        <li><a href="smart-home.html">Smart Home</a></li>
+                        <li><a href="pv-anlagen.html">PV-Anlagen</a></li>
+                        <li><a href="elektroinstallation.html">Elektroinstallation</a></li>
+                        <li><a href="netzwerktechnik.html">Netzwerktechnik</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Unternehmen</h4>
+                    <ul>
+                        <li><a href="ueber-uns.html">Über Uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><a href="tel:+4915256534017">+49 152 565 340 17</a></li>
+                        <li><a href="mailto:info@technik-smarthome.de">info@technik-smarthome.de</a></li>
+                        <li><a href="kontakt.html">Nenndorfer Chaussee 18</a></li>
+                        <li><a href="kontakt.html">30453 Hannover</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 M&M Elektro Engineering GmbH. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Cursor glow
+        const cursorGlow = document.getElementById('cursorGlow');
+        let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateGlow() {
+            glowX += (mouseX - glowX) * 0.1;
+            glowY += (mouseY - glowY) * 0.1;
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top = glowY + 'px';
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+
+        if (window.innerWidth < 992) cursorGlow.style.display = 'none';
+
+        // Reveal animations
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+        function revealOnScroll() {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < window.innerHeight - 150) el.classList.add('active');
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
